@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salva Boni - Planejamento Financeiro para Médicos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; background: #ffffff; line-height: 1.6; }
+
+        /* ===== HERO COM IMAGEM ===== */
+        .hero {
+            background: linear-gradient(135deg, rgba(13, 31, 45, 0.75) 0%, rgba(26, 58, 82, 0.75) 50%, rgba(15, 36, 56, 0.8) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%25" style="stop-color:%23e8f0f5;stop-opacity:1" /><stop offset="100%25" style="stop-color:%23d0e0eb;stop-opacity:1" /></linearGradient></defs><rect fill="url(%23bg)" width="1200" height="600"/><circle cx="150" cy="150" r="120" fill="%23c5d9e8" opacity="0.3"/><circle cx="1050" cy="450" r="150" fill="%23b8cfe1" opacity="0.25"/><path d="M 100 300 Q 200 250 300 300 T 500 300" stroke="%23a0c0d8" stroke-width="2" fill="none" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 100px 24px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: visible;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            z-index: 2;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 50px;
+            opacity: 0.88;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #1a3a52;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+            letter-spacing: 0.3px;
+        }
+
+        .cta-button:hover {
+            background-color: #e8c547;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.35);
+        }
+
+        /* ===== TRANSIÇÃO COM ONDA E TICKER ANIMADO ===== */
+        .wave-transition {
+            position: relative;
+            height: 120px;
+            background: white;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wave {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,40 Q300,0 600,40 T1200,40 L1200,120 L0,120 Z" fill="%231a3a52" opacity="0.15"/><path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="%231a3a52" opacity="0.1"/></svg>');
+            background-repeat: repeat-x;
+            background-size: 600px 120px;
+            animation: wave 15s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(600px); }
+        }
+
+        .ticker-container {
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-content {
+            display: flex;
+            gap: 40px;
+            animation: ticker 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ticker-item {
+            font-weight: 700;
+            color: #1a3a52;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .ticker-badge {
+            background-color: #d4af37;
+            color: #1a3a52;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 120px 24px;
+            max-width: 950px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-problema {
+            background: #ffffff;
+            padding-top: 80px;
+        }
+
+        .section-metodo {
+            background: linear-gradient(180deg, #ffffff 0%, #f5f6f7 100%);
+        }
+
+        .section-vitor {
+            background: linear-gradient(180deg, #f5f6f7 0%, #faf8fb 50%, #f5f6f7 100%);
+        }
+
+        .section-depoimentos {
+            background: #ffffff;
+        }
+
+        .section-planos {
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9f9 100%);
+        }
+
+        .section-faq {
+            background: #ffffff;
+        }
+
+        .section h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a3a52;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            color: #444;
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        /* ===== PROBLEMA ===== */
+        .problema-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .problema-content h2 {
+            text-align: center;
+        }
+
+        .problema-content h3 {
+            text-align: center;
+        }
+
+        .problema-content p {
+            text-align: center;
+        }
+
+        /* ===== VSL ===== */
+        .vsl-placeholder {
+            background: linear-gradient(135deg, #e8e8e8 0%, #d8d8d8 100%);
+            border-radius: 12px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 60px 0;
+            overflow: hidden;
+        }
+
+        .play-button {
+            width: 90px;
+            height: 90px;
+            background-color: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .play-button:hover {
+            background-color: #e8c547;
+            transform: scale(1.12);
+        }
+
+        .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 32px solid #1a3a52;
+            border-top: 22px solid transparent;
+            border-bottom: 22px solid transparent;
+            margin-left: 8px;
+        }
+
+        /* ===== MÓDULOS ===== */
+        .modulos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+            margin-top: 70px;
+        }
+
+        .modulo-card {
+            background: white;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 40px 28px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modulo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .modulo-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 20px 50px rgba(26, 58, 82, 0.1);
+            transform: translateY(-8px);
+        }
+
+        .modulo-card:hover::before {
+            opacity: 1;
+        }
+
+        .modulo-numero {
+            font-size: 48px;
+            font-weight: 800;
+            color: #d4af37;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .modulo-titulo {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a3a52;
+            margin-bottom: 14px;
+        }
+
+        .modulo-descricao {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ===== VITOR ===== */
+        .vitor-content {
+            max-width: 950px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .vitor-foto {
+            border-radius: 12px;
+            height: 380px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(26, 58, 82, 0.15);
+            background: linear-gradient(135deg, #e8e8e8 0%, #d5d5d5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vitor-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .vitor-texto h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a3a52;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .vitor-texto p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .vitor-destaque {
+            color: #d4af37;
+            font-weight: 700;
+        }
+
+        /* ===== DEPOIMENTOS ===== */
+        .depoimentos-container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .depoimentos-subtitulo {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 70px;
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+        }
+
+        .depoimento-card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .depoimento-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 12px 30px rgba(26, 58, 82, 0.08);
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #d4af37 0%, #e8c547 100%);
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a3a52;
+            font-weight: 700;
+            font-size: 22px;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar.avatar-1 { background: linear-gradient(135deg, #6b9bd1 0%, #4a7ba7 100%); }
+        .avatar.avatar-2 { background: linear-gradient(135deg, #b85a7f 0%, #8a4558 100%); }
+        .avatar.avatar-3 { background: linear-gradient(135deg, #d4a857 0%, #a68345 100%); }
+        .avatar.avatar-4 { background: linear-gradient(135deg, #7ba89a 0%, #5a8677 100%); }
+
+        .depoimento-nome {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a3a52;
+            margin-bottom: 4px;
+        }
+
+        .depoimento-especialidade {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 16px;
+        }
+
+        .depoimento-texto {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* ===== PLANOS ===== */
+        .planos-container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .planos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .plano-card {
+            background: white;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 14px;
+            padding: 48px 40px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plano-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37 50%, transparent);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .plano-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 25px 60px rgba(26, 58, 82, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .plano-card:hover::before {
+            opacity: 1;
+        }
+
+        .plano-premium {
+            border: 2px solid #d4af37;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.04) 0%, transparent 100%);
+        }
+
+        .premium-badge {
+            background-color: #d4af37;
+            color: #1a3a52;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: inline-block;
+            letter-spacing: 1.2px;
+        }
+
+        .plano-titulo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a3a52;
+            margin-bottom: 16px;
+        }
+
+        .plano-descricao {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .plano-preco-box {
+            margin-bottom: 32px;
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.06) 100%);
+            border-radius: 10px;
+            border: 1.5px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .plano-parcelamento {
+            font-size: 34px;
+            font-weight: 900;
+            color: #d4af37;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .plano-parcela-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 16px;
+        }
+
+        .plano-divider {
+            height: 1px;
+            background: rgba(212, 175, 55, 0.2);
+            margin-bottom: 16px;
+        }
+
+        .plano-avista-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 6px;
+        }
+
+        .plano-avista {
+            font-size: 18px;
+            color: #1a3a52;
+            font-weight: 700;
+        }
+
+        .plano-lista {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .plano-item {
+            font-size: 15px;
+            color: #555;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .plano-item:last-child {
+            border-bottom: none;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #d4af37;
+        }
+
+        .faq-pergunta {
+            background: white;
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #1a3a52;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-pergunta:hover {
+            background-color: #f9fafb;
+        }
+
+        .faq-icon {
+            font-size: 18px;
+            color: #d4af37;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            margin-left: 16px;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-resposta {
+            background-color: #f9fafb;
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #555;
+        }
+
+        .faq-item.active .faq-resposta {
+            padding: 24px;
+            max-height: 600px;
+        }
+
+        .faq-resposta p {
+            font-size: 15px;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #1a3a52;
+            color: white;
+            padding: 50px 24px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 28px;
+            color: #d4af37;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero h2 { font-size: 20px; }
+            .hero p { font-size: 16px; }
+            .section { padding: 80px 20px; }
+            .section h2 { font-size: 28px; }
+            .vitor-content { grid-template-columns: 1fr; gap: 40px; }
+            .modulos-grid { grid-template-columns: repeat(2, 1fr); }
+            .planos-grid { grid-template-columns: 1fr; }
+            .plano-parcelamento { font-size: 28px; }
+            .ticker-item { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>A medicina mudou sua carreira.</h1>
+            <h2>Agora é hora de mudar sua vida financeira.</h2>
+            <p>Organize sua vida financeira desde o início da carreira, construa patrimônio com estratégia e conquiste independência financeira sem depender de tentativa e erro.</p>
+            <button class="cta-button">Quero começar minha organização financeira</button>
+        </div>
+    </section>
+
+    <!-- TRANSIÇÃO COM ONDA E TICKER ANIMADO -->
+    <div class="wave-transition">
+        <div class="wave"></div>
+        <div class="ticker-container">
+            <div class="ticker-content">
+                <span class="ticker-item">
+                    Mude sua vida financeira
+                    <span class="ticker-badge">Salva Boni</span>
+                </span>
+                <span class="ticker-item">
+                    Mude sua vida financeira
+                    <span class="ticker-badge">Salva Boni</span>
+                </span>
+                <span class="ticker-item">
+                    Mude sua vida financeira
+                    <span class="ticker-badge">Salva Boni</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROBLEMA -->
+    <section class="section section-problema">
+        <div class="problema-content">
+            <h2>Você aprendeu a cuidar da saúde dos seus pacientes.</h2>
+            <h3>Mas ninguém ensinou você a cuidar do dinheiro que vai construir o seu futuro.</h3>
+            
+            <div class="vsl-placeholder">
+                <div class="play-button"></div>
+            </div>
+
+            <p>Você começou uma das profissões mais valorizadas do mundo. Mas isso não significa que alguém ensinou como administrar seus primeiros ganhos, organizar impostos, construir patrimônio ou tomar boas decisões financeiras.</p>
+            <p>É justamente nesse momento que muitos médicos atrasam anos da própria independência financeira.</p>
+        </div>
+    </section>
+
+    <!-- MÉTODO -->
+    <section class="section section-metodo">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h2>O que é o Método Salva Boni?</h2>
+            <h3>Um caminho claro para organizar sua vida financeira desde o início da carreira médica.</h3>
+            
+            <p>O Método Salva Boni foi desenvolvido exclusivamente para médicos em início de carreira que desejam construir patrimônio com inteligência, evitar erros financeiros e conquistar independência financeira com mais segurança.</p>
+            
+            <p>Mais do que ensinar investimentos, o método apresenta a sequência de decisões que todo médico precisa tomar para organizar sua vida financeira de forma prática e sustentável.</p>
+
+            <h2 style="margin-top: 80px; font-size: 32px;">Como funciona?</h2>
+            <h3 style="font-size: 20px;">Você aprende exatamente o que fazer em cada etapa da sua vida financeira.</h3>
+
+            <div class="modulos-grid">
+                <div class="modulo-card">
+                    <div class="modulo-numero">1</div>
+                    <div class="modulo-titulo">Fundamentos Financeiros</div>
+                    <div class="modulo-descricao">Entender a base: fluxo de caixa, orçamento e organização financeira</div>
+                </div>
+                <div class="modulo-card">
+                    <div class="modulo-numero">2</div>
+                    <div class="modulo-titulo">Impostos & Tributação</div>
+                    <div class="modulo-descricao">Aprenda a otimizar seus impostos e tomar decisões com segurança</div>
+                </div>
+                <div class="modulo-card">
+                    <div class="modulo-numero">3</div>
+                    <div class="modulo-titulo">Proteção Patrimonial</div>
+                    <div class="modulo-descricao">Segurança: seguros, previdência e proteção para sua família</div>
+                </div>
+                <div class="modulo-card">
+                    <div class="modulo-numero">4</div>
+                    <div class="modulo-titulo">Investimentos Inteligentes</div>
+                    <div class="modulo-descricao">Construa riqueza com estratégia e segurança</div>
+                </div>
+                <div class="modulo-card">
+                    <div class="modulo-numero">5</div>
+                    <div class="modulo-titulo">Imóveis & Patrimônio</div>
+                    <div class="modulo-descricao">Decisões sobre imóveis com clareza e segurança</div>
+                </div>
+                <div class="modulo-card">
+                    <div class="modulo-numero">6</div>
+                    <div class="modulo-titulo">Renda Passiva</div>
+                    <div class="modulo-descricao">Crie múltiplas fontes de renda para independência</div>
+                </div>
+                <div class="modulo-card">
+                    <div class="modulo-numero">7</div>
+                    <div class="modulo-titulo">Estratégia Financeira</div>
+                    <div class="modulo-descricao">Planeje seu futuro com visão clara de longo prazo</div>
+                </div>
+                <div class="modulo-card">
+                    <div class="modulo-numero">8</div>
+                    <div class="modulo-titulo">Independência Financeira</div>
+                    <div class="modulo-descricao">Alcance liberdade financeira e qualidade de vida</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VITOR -->
+    <section class="section section-vitor" style="padding: 120px 24px;">
+        <div class="vitor-content">
+            <div class="vitor-foto">
+                <img src="vitor.png" alt="Vitor Bonilha - Consultor Financeiro">
+            </div>
+            <div class="vitor-texto">
+                <h2>Quem é o Vitor Bonilha?</h2>
+                
+                <p>Ele é <span class="vitor-destaque">Consultor Financeiro Estratégico há 10 anos</span>, com especialização em planejamento patrimonial.</p>
+                
+                <p>Vitor atua exclusivamente com médicos. Ao longo de sua trajetória percebeu que excelentes profissionais da medicina iniciavam suas carreiras completamente despreparados para administrar patrimônio.</p>
+                
+                <p>Foi dessa realidade que nasceu o Método Salva Boni.</p>
+                
+                <p>Hoje sua missão é ajudar médicos a construírem patrimônio desde o início da carreira com clareza, estratégia e independência financeira.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="section section-depoimentos">
+        <div class="depoimentos-container">
+            <h2>Quem aplicou o método já começou a transformar sua vida financeira.</h2>
+            <div class="depoimentos-subtitulo">
+                Veja o que médicos reais estão experimentando
+            </div>
+
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="avatar avatar-1"></div>
+                    <div class="depoimento-nome">Dr. Roberto</div>
+                    <div class="depoimento-especialidade">Cirurgião Geral</div>
+                    <div class="depoimento-texto">"Hoje tenho clareza para administrar meu dinheiro e finalmente comecei a construir patrimônio."</div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="avatar avatar-2"></div>
+                    <div class="depoimento-nome">Dra. Marina</div>
+                    <div class="depoimento-especialidade">Pediatra</div>
+                    <div class="depoimento-texto">"Senti segurança em tomar decisões sobre investimentos. Vitor entende nossa realidade."</div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="avatar avatar-3"></div>
+                    <div class="depoimento-nome">Dr. Felipe</div>
+                    <div class="depoimento-especialidade">Cardiologista</div>
+                    <div class="depoimento-texto">"O método me ajudou a organizar minha vida financeira em poucos meses. Vale muito a pena."</div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="avatar avatar-4"></div>
+                    <div class="depoimento-nome">Dra. Camila</div>
+                    <div class="depoimento-especialidade">Dermatologista</div>
+                    <div class="depoimento-texto">"Finalmente entendi por onde começar. O Vitor simplifica tudo que parecia complicado."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANOS -->
+    <section class="section section-planos">
+        <div class="planos-container">
+            <h2>Escolha como você quer construir seu patrimônio</h2>
+
+            <div class="planos-grid">
+                <div class="plano-card">
+                    <div class="plano-titulo">Plano Essencial Boni</div>
+                    <div class="plano-descricao">Ideal para médicos que desejam organizar sua vida financeira e aplicar o método no próprio ritmo.</div>
+                    
+                    <div class="plano-preco-box">
+                        <div class="plano-parcelamento">12x de R$ 33,00</div>
+                        <div class="plano-parcela-label">parcelado em 12 meses</div>
+                        <div class="plano-divider"></div>
+                        <div class="plano-avista-label">ou à vista</div>
+                        <div class="plano-avista">R$ 397,00</div>
+                    </div>
+                    
+                    <div class="plano-lista">
+                        <div class="plano-item">✓ 30 horas de curso (8 módulos)</div>
+                        <div class="plano-item">✓ Acesso por 12 meses</div>
+                        <div class="plano-item">✓ Atualizações permanentes</div>
+                        <div class="plano-item">✓ Suporte por e-mail</div>
+                        <div class="plano-item">✓ Garantia de 7 dias</div>
+                    </div>
+
+                    <button class="cta-button" style="width: 100%;">Quero começar</button>
+                </div>
+
+                <div class="plano-card plano-premium">
+                    <div class="premium-badge">PREMIUM</div>
+                    <div class="plano-titulo">Plano Patrimônio Boni</div>
+                    <div class="plano-descricao">Receba acompanhamento individual com o Vitor para acelerar suas decisões financeiras.</div>
+                    
+                    <div class="plano-preco-box">
+                        <div class="plano-parcelamento">12x de R$ 167,00</div>
+                        <div class="plano-parcela-label">parcelado em 12 meses</div>
+                        <div class="plano-divider"></div>
+                        <div class="plano-avista-label">ou à vista</div>
+                        <div class="plano-avista">R$ 2.000,00</div>
+                    </div>
+                    
+                    <div class="plano-lista">
+                        <div class="plano-item">✓ 30 horas de curso (8 módulos)</div>
+                        <div class="plano-item">✓ 4 encontros com Vitor</div>
+                        <div class="plano-item">✓ WhatsApp direto com Vitor</div>
+                        <div class="plano-item">✓ Acesso por 12 meses</div>
+                        <div class="plano-item">✓ Garantia de 7 dias</div>
+                    </div>
+
+                    <button class="cta-button" style="width: 100%;">Quero acompanhamento</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-faq">
+        <div class="faq-container">
+            <h2>Dúvidas frequentes</h2>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span style="display: flex; align-items: center;"><span class="faq-icon">◆</span> <span>O método é apenas para médicos em início de carreira?</span></span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>Ele foi desenvolvido principalmente para médicos nos primeiros anos da profissão. Porém, também atende profissionais que já atuam há mais tempo e ainda desejam organizar sua vida financeira, construir patrimônio e tomar decisões mais estratégicas.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span style="display: flex; align-items: center;"><span class="faq-icon">◆</span> <span>Preciso entender de investimentos?</span></span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>Não. Todo o conteúdo foi pensado para quem está começando e apresenta os conceitos de forma prática, simples e aplicável.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span style="display: flex; align-items: center;"><span class="faq-icon">◆</span> <span>Em quanto tempo consigo aplicar o conteúdo?</span></span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>As aulas são organizadas por situações reais da vida financeira do médico. Sempre que surgir uma decisão importante, você poderá acessar o módulo correspondente e aplicar imediatamente o conhecimento.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span style="display: flex; align-items: center;"><span class="faq-icon">◆</span> <span>O curso possui suporte?</span></span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>Sim. Durante todo o período de acesso você poderá enviar dúvidas por e-mail para nossa equipe.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span style="display: flex; align-items: center;"><span class="faq-icon">◆</span> <span>Qual é a diferença entre os planos?</span></span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>O Plano Essencial Boni oferece acesso completo ao método. O Plano Patrimônio Boni acrescenta acompanhamento individual com 4 encontros e acesso ao WhatsApp do Vitor para adaptar cada decisão financeira à sua realidade.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span style="display: flex; align-items: center;"><span class="faq-icon">◆</span> <span>Como funciona a garantia?</span></span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>Você possui sete dias para conhecer o método. Caso não faça sentido para sua realidade, basta solicitar o reembolso.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span style="display: flex; align-items: center;"><span class="faq-icon">◆</span> <span>O método ajuda quem pretende abrir uma clínica?</span></span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>Sim. Além de organização financeira e patrimônio, o método ajuda o médico a compreender qual é o momento ideal para assumir novos compromissos financeiros com segurança.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span style="display: flex; align-items: center;"><span class="faq-icon">◆</span> <span>O curso ensina apenas investimentos?</span></span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>Não. O objetivo é ensinar o médico a organizar sua vida financeira, compreender impostos, proteger patrimônio, investir corretamente e construir independência financeira ao longo da carreira.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Salva Boni</div>
+            <div class="footer-links">
+                <a href="#">Instagram</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Contato</a>
+            </div>
+            <div class="footer-copy">
+                © 2024 Salva Boni. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const pergunta = item.querySelector('.faq-pergunta');
+            pergunta.addEventListener('click', () => {
+                document.querySelectorAll('.faq-item.active').forEach(otherItem => {
+                    if (otherItem !== item) otherItem.classList.remove('active');
+                });
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
