@@ -8,15 +8,107 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; background: #ffffff; line-height: 1.6; }
 
+        /* ===== MENU ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 31, 45, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .navbar-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 0.3px;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .navbar-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.3px;
+        }
+        .navbar-links a:hover {
+            color: #d4af37;
+        }
+        .navbar-cta {
+            background-color: #d4af37;
+            color: #1a3a52 !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700 !important;
+        }
+        .navbar-cta:hover {
+            background-color: #e8c547;
+            color: #1a3a52 !important;
+        }
+        @media (max-width: 768px) {
+            .navbar-links { display: none; }
+        }
+
+        /* ===== WHATSAPP BUTTON ===== */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25d366;
+            color: #ffffff !important;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            margin-top: 16px;
+        }
+        .whatsapp-btn:hover {
+            background-color: #1ebe5d;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+            flex-shrink: 0;
+        }
+        .whatsapp-section {
+            text-align: center;
+            padding: 60px 24px;
+            background: #f5f6f7;
+        }
+        .whatsapp-section p {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
         /* ===== HERO COM IMAGEM ===== */
         .hero {
-            background: linear-gradient(135deg, rgba(13, 31, 45, 0.75) 0%, rgba(26, 58, 82, 0.75) 50%, rgba(15, 36, 56, 0.8) 100%), 
+            background: linear-gradient(135deg, rgba(13, 31, 45, 0.75) 0%, rgba(26, 58, 82, 0.75) 50%, rgba(15, 36, 56, 0.8) 100%),
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%25" style="stop-color:%23e8f0f5;stop-opacity:1" /><stop offset="100%25" style="stop-color:%23d0e0eb;stop-opacity:1" /></linearGradient></defs><rect fill="url(%23bg)" width="1200" height="600"/><circle cx="150" cy="150" r="120" fill="%23c5d9e8" opacity="0.3"/><circle cx="1050" cy="450" r="150" fill="%23b8cfe1" opacity="0.25"/><path d="M 100 300 Q 200 250 300 300 T 500 300" stroke="%23a0c0d8" stroke-width="2" fill="none" opacity="0.2"/></svg>');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: white;
-            padding: 100px 24px;
+            padding: 160px 24px 100px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -724,6 +816,19 @@
     </style>
 </head>
 <body>
+    <!-- MENU -->
+    <nav class="navbar">
+        <div class="navbar-logo">Salva Boni</div>
+        <ul class="navbar-links">
+            <li><a href="#metodo">O Método</a></li>
+            <li><a href="#vitor">Quem é Vitor Bonilha</a></li>
+            <li><a href="#modulos">Módulos</a></li>
+            <li><a href="#planos">Planos</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://pay.hotmart.com/I93630334B?off=3dbt42ga&&bid=1782321577114" target="_blank" class="navbar-cta">Quero começar</a></li>
+        </ul>
+    </nav>
+
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
@@ -734,22 +839,25 @@
         </div>
     </section>
 
-    <!-- TRANSIÇÃO COM ONDA E TICKER ANIMADO -->
-    <div class="wave-transition">
-        <div class="wave"></div>
+    <!-- TICKER ANIMADO -->
+    <div style="background:#1a3a52; padding: 14px 0; overflow:hidden;">
         <div class="ticker-container">
             <div class="ticker-content">
-                <span class="ticker-item">
-                    Mude sua vida financeira
-                    <span class="ticker-badge">Salva Boni</span>
+                <span class="ticker-item" style="color:#fff;">
+                    Método Salva Boni
+                    <span class="ticker-badge">Mude sua vida financeira</span>
                 </span>
-                <span class="ticker-item">
-                    Mude sua vida financeira
-                    <span class="ticker-badge">Salva Boni</span>
+                <span class="ticker-item" style="color:#fff;">
+                    Método Salva Boni
+                    <span class="ticker-badge">Mude sua vida financeira</span>
                 </span>
-                <span class="ticker-item">
-                    Mude sua vida financeira
-                    <span class="ticker-badge">Salva Boni</span>
+                <span class="ticker-item" style="color:#fff;">
+                    Método Salva Boni
+                    <span class="ticker-badge">Mude sua vida financeira</span>
+                </span>
+                <span class="ticker-item" style="color:#fff;">
+                    Método Salva Boni
+                    <span class="ticker-badge">Mude sua vida financeira</span>
                 </span>
             </div>
         </div>
@@ -771,7 +879,7 @@
     </section>
 
     <!-- MÉTODO -->
-    <section class="section section-metodo">
+    <section id="metodo" class="section section-metodo">
         <div style="max-width: 900px; margin: 0 auto;">
             <h2>O que é o Método Salva Boni?</h2>
             <h3>Um caminho claro para organizar sua vida financeira desde o início da carreira médica.</h3>
@@ -780,7 +888,7 @@
             
             <p>Mais do que ensinar investimentos, o método apresenta a sequência de decisões que todo médico precisa tomar para organizar sua vida financeira de forma prática e sustentável.</p>
 
-            <h2 style="margin-top: 80px; font-size: 32px;">Como funciona?</h2>
+            <h2 id="modulos" style="margin-top: 80px; font-size: 32px;">Como funciona?</h2>
             <h3 style="font-size: 20px;">Você aprende exatamente o que fazer em cada etapa da sua vida financeira.</h3>
 
             <div class="modulos-grid">
@@ -828,8 +936,18 @@
         </div>
     </section>
 
+    <!-- WHATSAPP CTA após módulos -->
+    <div class="whatsapp-section">
+        <p style="font-weight:700; color:#1a3a52; font-size:22px;">Tem dúvidas sobre o método?</p>
+        <p>Fale diretamente com a equipe do Vitor Bonilha pelo WhatsApp.</p>
+        <a href="https://wa.me/5544991159319?text=Olá!%20Sou%20médico(a)%20e%20tenho%20interesse%20em%20conhecer%20melhor%20o%20Método%20Salva%20Boni." target="_blank" class="whatsapp-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar pelo WhatsApp
+        </a>
+    </div>
+
     <!-- VITOR -->
-    <section class="section section-vitor" style="padding: 120px 24px;">
+    <section id="vitor" class="section section-vitor" style="padding: 120px 24px;">
         <div class="vitor-content">
             <div class="vitor-foto">
                 <img src="vitor.png" alt="Vitor Bonilha - Consultor Financeiro">
@@ -886,7 +1004,7 @@
     </section>
 
     <!-- PLANOS -->
-    <section class="section section-planos">
+    <section id="planos" class="section section-planos">
         <div class="planos-container">
             <h2>Escolha como você quer construir seu patrimônio</h2>
 
@@ -911,7 +1029,7 @@
                         <div class="plano-item">✓ Garantia de 7 dias</div>
                     </div>
 
-                    <button class="cta-button" style="width: 100%;">Quero começar</button>
+                    <a href="https://pay.hotmart.com/I93630334B?off=3dbt42ga&&bid=1782321577114" target="_blank" class="cta-button" style="width: 100%; display:block; text-align:center; text-decoration:none;">Quero começar</a>
                 </div>
 
                 <div class="plano-card plano-premium">
@@ -941,8 +1059,18 @@
         </div>
     </section>
 
+    <!-- WHATSAPP CTA após planos -->
+    <div class="whatsapp-section">
+        <p style="font-weight:700; color:#1a3a52; font-size:22px;">Ainda tem dúvidas sobre qual plano escolher?</p>
+        <p>Entre em contato e a equipe do Vitor vai te ajudar a decidir.</p>
+        <a href="https://wa.me/5544991159319?text=Olá!%20Sou%20médico(a)%20e%20tenho%20interesse%20em%20conhecer%20melhor%20o%20Método%20Salva%20Boni." target="_blank" class="whatsapp-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar pelo WhatsApp
+        </a>
+    </div>
+
     <!-- FAQ -->
-    <section class="section section-faq">
+    <section id="faq" class="section section-faq">
         <div class="faq-container">
             <h2>Dúvidas frequentes</h2>
 
@@ -1035,6 +1163,20 @@
     </footer>
 
     <script>
+        // Smooth scroll para links do menu
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    const offset = 64;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
         document.querySelectorAll('.faq-item').forEach(item => {
             const pergunta = item.querySelector('.faq-pergunta');
             pergunta.addEventListener('click', () => {
