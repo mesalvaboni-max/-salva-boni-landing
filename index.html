@@ -361,16 +361,16 @@
         /* ===== MÓDULOS ===== */
         .modulos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 28px;
-            margin-top: 70px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
         }
 
         .modulo-card {
             background: white;
             border: 1.5px solid #e5e5e5;
             border-radius: 12px;
-            padding: 40px 28px;
+            padding: 28px 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -433,20 +433,18 @@
 
         .vitor-foto {
             border-radius: 12px;
-            height: 480px;
+            height: 520px;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(26, 58, 82, 0.15);
-            background: linear-gradient(135deg, #e8e8e8 0%, #d5d5d5 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #f0f0f0;
         }
 
         .vitor-foto img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: top center;
+            object-position: center top;
+            display: block;
         }
 
         .vitor-texto h2 {
@@ -800,18 +798,76 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: white;
+            border-radius: 12px;
+            max-width: 680px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 48px 40px;
+            position: relative;
+        }
+        .modal-box h2 {
+            font-size: 24px;
+            color: #1a3a52;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .modal-box p, .modal-box li {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+            text-align: left;
+            margin-bottom: 12px;
+        }
+        .modal-box ul { padding-left: 20px; margin-bottom: 12px; }
+        .modal-box h3 { font-size: 16px; color: #1a3a52; margin: 20px 0 8px; }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .modal-close:hover { color: #1a3a52; }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            .hero h2 { font-size: 20px; }
-            .hero p { font-size: 16px; }
-            .section { padding: 80px 20px; }
-            .section h2 { font-size: 28px; }
-            .vitor-content { grid-template-columns: 1fr; gap: 40px; }
-            .modulos-grid { grid-template-columns: repeat(2, 1fr); }
-            .planos-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 32px; }
+            .hero h2 { font-size: 18px; }
+            .hero p { font-size: 15px; }
+            .section { padding: 60px 20px; }
+            .section h2 { font-size: 26px; }
+            .section h3 { font-size: 18px; margin-bottom: 30px; }
+            .vitor-content { grid-template-columns: 1fr; gap: 32px; }
+            .modulos-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+            .modulo-card { padding: 24px 16px; }
+            .modulo-numero { font-size: 36px; margin-bottom: 10px; }
+            .planos-grid { grid-template-columns: 1fr; gap: 24px; }
             .plano-parcelamento { font-size: 28px; }
             .ticker-item { font-size: 14px; }
+            .depoimentos-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .depoimento-card { padding: 24px 16px; }
+            .whatsapp-section { padding: 40px 20px; }
+            .modal-box { padding: 32px 24px; }
+            .vitor-foto { height: 340px; }
         }
     </style>
 </head>
@@ -976,25 +1032,33 @@
 
             <div class="depoimentos-grid">
                 <div class="depoimento-card">
-                    <div class="avatar avatar-1"></div>
+                    <div class="avatar">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=140&h=140&fit=crop&crop=face" alt="Dr. Roberto">
+                    </div>
                     <div class="depoimento-nome">Dr. Roberto</div>
                     <div class="depoimento-especialidade">Cirurgião Geral</div>
                     <div class="depoimento-texto">"Hoje tenho clareza para administrar meu dinheiro e finalmente comecei a construir patrimônio."</div>
                 </div>
                 <div class="depoimento-card">
-                    <div class="avatar avatar-2"></div>
+                    <div class="avatar">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=140&h=140&fit=crop&crop=face" alt="Dra. Marina">
+                    </div>
                     <div class="depoimento-nome">Dra. Marina</div>
                     <div class="depoimento-especialidade">Pediatra</div>
                     <div class="depoimento-texto">"Senti segurança em tomar decisões sobre investimentos. Vitor entende nossa realidade."</div>
                 </div>
                 <div class="depoimento-card">
-                    <div class="avatar avatar-3"></div>
+                    <div class="avatar">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=140&h=140&fit=crop&crop=face" alt="Dr. Felipe">
+                    </div>
                     <div class="depoimento-nome">Dr. Felipe</div>
                     <div class="depoimento-especialidade">Cardiologista</div>
                     <div class="depoimento-texto">"O método me ajudou a organizar minha vida financeira em poucos meses. Vale muito a pena."</div>
                 </div>
                 <div class="depoimento-card">
-                    <div class="avatar avatar-4"></div>
+                    <div class="avatar">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=140&h=140&fit=crop&crop=face" alt="Dra. Camila">
+                    </div>
                     <div class="depoimento-nome">Dra. Camila</div>
                     <div class="depoimento-especialidade">Dermatologista</div>
                     <div class="depoimento-texto">"Finalmente entendi por onde começar. O Vitor simplifica tudo que parecia complicado."</div>
@@ -1151,16 +1215,70 @@
         <div class="footer-content">
             <div class="footer-logo">Salva Boni</div>
             <div class="footer-links">
-                <a href="#">Instagram</a>
-                <a href="#">Política de Privacidade</a>
-                <a href="#">Termos de Uso</a>
-                <a href="#">Contato</a>
+                <a href="https://www.instagram.com/salvaboni/" target="_blank">Instagram</a>
+                <a href="#" onclick="document.getElementById('modal-privacidade').classList.add('active'); return false;">Política de Privacidade</a>
+                <a href="#" onclick="document.getElementById('modal-termos').classList.add('active'); return false;">Termos de Uso</a>
+                <a href="https://wa.me/5544991159319?text=Olá!%20Tenho%20interesse%20no%20Método%20Salva%20Boni%20e%20gostaria%20de%20receber%20mais%20informações." target="_blank">Contato</a>
             </div>
             <div class="footer-copy">
-                © 2024 Salva Boni. Todos os direitos reservados.
+                © 2026 Salva Boni. Todos os direitos reservados.
             </div>
         </div>
     </footer>
+
+    <!-- MODAL POLÍTICA DE PRIVACIDADE -->
+    <div class="modal-overlay" id="modal-privacidade">
+        <div class="modal-box">
+            <button class="modal-close" onclick="document.getElementById('modal-privacidade').classList.remove('active')">×</button>
+            <h2>Política de Privacidade</h2>
+            <p>Esta Política de Privacidade descreve como o <strong>Método Salva Boni</strong> coleta, utiliza e protege as informações dos usuários, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</p>
+            <h3>1. Dados Coletados</h3>
+            <p>Podemos coletar dados pessoais como nome, e-mail, telefone e informações de pagamento, fornecidos voluntariamente pelo usuário ao preencher formulários, realizar compras ou entrar em contato.</p>
+            <h3>2. Finalidade do Uso dos Dados</h3>
+            <ul>
+                <li>Prestação dos serviços contratados;</li>
+                <li>Envio de comunicações relacionadas ao curso e atualizações;</li>
+                <li>Atendimento ao cliente e suporte;</li>
+                <li>Melhoria da experiência do usuário na plataforma;</li>
+                <li>Cumprimento de obrigações legais e regulatórias.</li>
+            </ul>
+            <h3>3. Compartilhamento de Dados</h3>
+            <p>Os dados não serão vendidos ou cedidos a terceiros, exceto quando necessário para a prestação dos serviços (ex.: plataformas de pagamento como Hotmart) ou por exigência legal.</p>
+            <h3>4. Direitos do Titular</h3>
+            <p>O usuário pode, a qualquer momento, solicitar acesso, correção, portabilidade ou exclusão dos seus dados pessoais, mediante contato pelo WhatsApp ou e-mail.</p>
+            <h3>5. Segurança</h3>
+            <p>Adotamos medidas técnicas e organizacionais adequadas para proteger os dados pessoais contra acesso não autorizado, perda ou destruição.</p>
+            <h3>6. Contato</h3>
+            <p>Dúvidas sobre esta política podem ser enviadas pelo WhatsApp: <strong>(44) 99115-9319</strong>.</p>
+        </div>
+    </div>
+
+    <!-- MODAL TERMOS DE USO -->
+    <div class="modal-overlay" id="modal-termos">
+        <div class="modal-box">
+            <button class="modal-close" onclick="document.getElementById('modal-termos').classList.remove('active')">×</button>
+            <h2>Termos de Uso</h2>
+            <p>Ao acessar e utilizar os serviços do <strong>Método Salva Boni</strong>, o usuário declara ter lido, compreendido e concordado com os presentes Termos de Uso.</p>
+            <h3>1. Sobre o Serviço</h3>
+            <p>O Método Salva Boni é um curso online de educação financeira voltado exclusivamente para médicos, oferecido por meio de plataforma digital (Hotmart).</p>
+            <h3>2. Acesso e Uso</h3>
+            <ul>
+                <li>O acesso ao conteúdo é pessoal e intransferível;</li>
+                <li>É proibido compartilhar login, reproduzir, distribuir ou comercializar qualquer material do curso;</li>
+                <li>O acesso está disponível pelo período contratado no plano escolhido.</li>
+            </ul>
+            <h3>3. Garantia</h3>
+            <p>O usuário tem direito a reembolso integral em até 7 (sete) dias corridos após a compra, sem necessidade de justificativa, conforme o Código de Defesa do Consumidor.</p>
+            <h3>4. Propriedade Intelectual</h3>
+            <p>Todo o conteúdo do curso — aulas, materiais, metodologia e marca — é de propriedade exclusiva do Método Salva Boni. É vedada qualquer reprodução sem autorização prévia e por escrito.</p>
+            <h3>5. Responsabilidades</h3>
+            <p>O conteúdo tem caráter educativo e informativo. Não constitui consultoria financeira individualizada. O usuário é responsável pelas decisões tomadas com base no aprendizado obtido.</p>
+            <h3>6. Modificações</h3>
+            <p>Estes termos podem ser atualizados a qualquer momento. A continuidade do uso após alterações implica concordância com os novos termos.</p>
+            <h3>7. Contato</h3>
+            <p>Dúvidas podem ser enviadas pelo WhatsApp: <strong>(44) 99115-9319</strong>.</p>
+        </div>
+    </div>
 
     <script>
         // Smooth scroll para links do menu
@@ -1174,6 +1292,13 @@
                     const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
                     window.scrollTo({ top, behavior: 'smooth' });
                 }
+            });
+        });
+
+        // Fechar modais ao clicar fora
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) this.classList.remove('active');
             });
         });
 
