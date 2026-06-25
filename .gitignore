@@ -1,0 +1,33 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (se usar algum build tool no futuro)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build/dist
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# Temporários
+*.tmp
+.temp/
