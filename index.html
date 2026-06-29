@@ -25,11 +25,13 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
         .navbar-logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: #d4af37;
-            letter-spacing: 0.3px;
             flex-shrink: 0;
+        }
+        .navbar-logo img {
+            height: 36px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
         }
         .navbar-links {
             display: flex;
@@ -948,7 +950,7 @@
 <body>
     <!-- MENU -->
     <nav class="navbar">
-        <div class="navbar-logo">Salva Boni</div>
+        <div class="navbar-logo"><img src="logo colorida.png" alt="Salva Boni"></div>
         <ul class="navbar-links">
             <li><a href="#metodo">O Método</a></li>
             <li><a href="#vitor">Quem é Vitor Bonilha</a></li>
@@ -1302,7 +1304,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">Salva Boni</div>
+            <div class="footer-logo"><img src="logo colorida.png" alt="Salva Boni" style="height:56px; width:auto; filter: brightness(0) invert(1);"></div>
             <div class="footer-links">
                 <a href="https://www.instagram.com/salvaboni/" target="_blank">Instagram</a>
                 <a href="#" onclick="document.getElementById('modal-privacidade').classList.add('active'); return false;">Política de Privacidade</a>
