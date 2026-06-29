@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salva Boni - Planejamento Financeiro para Médicos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --azul: #1F4B7A;
+            --dourado: #A4873A;
+            --dourado-hover: #b8974a;
+            --cinza: #9DA1A2;
+            --branco: #FFFFFF;
+            --azul-escuro: #0d2440;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; background: #ffffff; line-height: 1.6; }
+        body { font-family: 'Montserrat', sans-serif; font-weight: 400; color: #2a2a2a; background: var(--branco); line-height: 1.6; }
 
         /* ===== MENU ===== */
         .navbar {
@@ -15,14 +26,14 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(13, 31, 45, 0.97);
+            background: rgba(31, 75, 122, 0.97);
             backdrop-filter: blur(10px);
             padding: 0 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             height: 64px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.25);
         }
         .navbar-logo {
             flex-shrink: 0;
@@ -41,20 +52,22 @@
         .navbar-links a {
             color: rgba(255,255,255,0.85);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
             transition: color 0.3s;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        .navbar-links a:hover { color: #d4af37; }
+        .navbar-links a:hover { color: var(--dourado); }
         .navbar-cta {
-            background-color: #d4af37;
-            color: #1a3a52 !important;
+            background-color: var(--dourado);
+            color: var(--azul) !important;
             padding: 8px 20px;
             border-radius: 6px;
             font-weight: 700 !important;
         }
-        .navbar-cta:hover { background-color: #e8c547; color: #1a3a52 !important; }
+        .navbar-cta:hover { background-color: var(--dourado-hover); color: var(--azul) !important; }
 
         /* Hambúrguer mobile */
         .hamburger {
@@ -70,7 +83,7 @@
             display: block;
             width: 24px;
             height: 2px;
-            background: #d4af37;
+            background: var(--dourado);
             border-radius: 2px;
             transition: all 0.3s;
         }
@@ -80,7 +93,7 @@
             top: 64px;
             left: 0;
             right: 0;
-            background: rgba(13, 31, 45, 0.98);
+            background: rgba(31, 75, 122, 0.98);
             z-index: 999;
             padding: 16px 0 24px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.3);
@@ -102,12 +115,12 @@
             border-bottom: 1px solid rgba(255,255,255,0.06);
             transition: color 0.2s;
         }
-        .mobile-menu ul li a:hover { color: #d4af37; }
+        .mobile-menu ul li a:hover { color: var(--dourado); }
         .mobile-menu .mobile-cta {
             display: block;
             margin: 16px 24px 0;
-            background: #d4af37;
-            color: #1a3a52 !important;
+            background: var(--dourado);
+            color: var(--azul) !important;
             text-align: center;
             padding: 14px;
             border-radius: 6px;
@@ -151,11 +164,12 @@
         .whatsapp-section {
             text-align: center;
             padding: 60px 24px;
-            background: #f5f6f7;
+            background: #f4f6f9;
         }
         .whatsapp-section p {
-            font-size: 18px;
-            color: #444;
+            font-size: 17px;
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
             margin-bottom: 8px;
         }
 
@@ -185,23 +199,27 @@
         }
 
         .hero h1 {
-            font-size: 56px;
-            font-weight: 700;
+            font-size: 52px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
             margin-bottom: 20px;
             line-height: 1.15;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
         .hero h2 {
-            font-size: 28px;
-            font-weight: 400;
+            font-size: 22px;
+            font-weight: 300;
+            font-family: 'Montserrat', sans-serif;
             margin-bottom: 40px;
             opacity: 0.95;
-            line-height: 1.3;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 17px;
+            font-weight: 400;
             margin-bottom: 50px;
             opacity: 0.88;
             line-height: 1.8;
@@ -209,23 +227,25 @@
 
         .cta-button {
             display: inline-block;
-            background-color: #d4af37;
-            color: #1a3a52;
+            background-color: var(--dourado);
+            color: var(--branco);
             padding: 18px 40px;
             border: none;
             border-radius: 6px;
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
-            letter-spacing: 0.3px;
+            box-shadow: 0 8px 24px rgba(164, 135, 58, 0.3);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .cta-button:hover {
-            background-color: #e8c547;
+            background-color: var(--dourado-hover);
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.35);
+            box-shadow: 0 14px 32px rgba(164, 135, 58, 0.4);
         }
 
         /* ===== TRANSIÇÃO COM ONDA E TICKER ANIMADO ===== */
@@ -273,23 +293,25 @@
         }
 
         .ticker-item {
-            font-weight: 700;
-            color: #1a3a52;
-            font-size: 18px;
-            letter-spacing: 0.5px;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--branco);
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             display: flex;
             align-items: center;
             gap: 16px;
         }
 
         .ticker-badge {
-            background-color: #d4af37;
-            color: #1a3a52;
-            padding: 8px 16px;
+            background-color: var(--dourado);
+            color: var(--branco);
+            padding: 7px 16px;
             border-radius: 4px;
-            font-weight: 800;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
         }
 
         @keyframes ticker {
@@ -335,26 +357,30 @@
         }
 
         .section h2 {
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #1a3a52;
+            font-size: 38px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 16px;
+            color: var(--azul);
             text-align: center;
         }
 
         .section h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 50px;
-            color: #444;
+            font-size: 20px;
+            font-weight: 300;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 40px;
+            color: var(--cinza);
             text-align: center;
+            letter-spacing: 0.3px;
         }
 
         .section p {
             font-size: 16px;
+            font-weight: 400;
             line-height: 1.9;
             color: #555;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
@@ -392,7 +418,7 @@
         .play-button {
             width: 90px;
             height: 90px;
-            background-color: #d4af37;
+            background-color: var(--dourado);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -403,7 +429,7 @@
         }
 
         .play-button:hover {
-            background-color: #e8c547;
+            background-color: var(--dourado-hover);
             transform: scale(1.12);
         }
 
@@ -411,7 +437,7 @@
             content: '';
             width: 0;
             height: 0;
-            border-left: 32px solid #1a3a52;
+            border-left: 32px solid var(--azul);
             border-top: 22px solid transparent;
             border-bottom: 22px solid transparent;
             margin-left: 8px;
@@ -444,13 +470,13 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            background: linear-gradient(90deg, transparent, var(--dourado), transparent);
             opacity: 0;
             transition: opacity 0.5s;
         }
 
         .modulo-card:hover {
-            border-color: #d4af37;
+            border-color: var(--dourado);
             box-shadow: 0 20px 50px rgba(26, 58, 82, 0.1);
             transform: translateY(-8px);
         }
@@ -462,21 +488,23 @@
         .modulo-numero {
             font-size: 48px;
             font-weight: 800;
-            color: #d4af37;
+            color: var(--dourado);
             margin-bottom: 16px;
             letter-spacing: -1px;
         }
 
         .modulo-titulo {
-            font-size: 17px;
-            font-weight: 700;
-            color: #1a3a52;
-            margin-bottom: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            margin-bottom: 10px;
         }
 
         .modulo-descricao {
-            font-size: 14px;
-            color: #666;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--cinza);
             line-height: 1.7;
         }
 
@@ -507,23 +535,25 @@
         }
 
         .vitor-texto h2 {
-            font-size: 36px;
-            font-weight: 700;
-            color: #1a3a52;
+            font-size: 34px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
             margin-bottom: 20px;
             line-height: 1.2;
         }
 
         .vitor-texto p {
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 400;
             color: #555;
             line-height: 1.9;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             text-align: left;
         }
 
         .vitor-destaque {
-            color: #d4af37;
+            color: var(--dourado);
             font-weight: 700;
         }
 
@@ -556,20 +586,20 @@
         }
 
         .depoimento-card:hover {
-            border-color: #d4af37;
+            border-color: var(--dourado);
             box-shadow: 0 12px 30px rgba(26, 58, 82, 0.08);
         }
 
         .avatar {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, #d4af37 0%, #e8c547 100%);
+            background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-hover) 100%);
             border-radius: 50%;
             margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1a3a52;
+            color: var(--azul);
             font-weight: 700;
             font-size: 22px;
             overflow: hidden;
@@ -587,20 +617,25 @@
         .avatar.avatar-4 { background: linear-gradient(135deg, #7ba89a 0%, #5a8677 100%); }
 
         .depoimento-nome {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1a3a52;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
             margin-bottom: 4px;
         }
 
         .depoimento-especialidade {
-            font-size: 13px;
-            color: #999;
-            margin-bottom: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--cinza);
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .depoimento-texto {
             font-size: 14px;
+            font-weight: 400;
             color: #666;
             line-height: 1.7;
             font-style: italic;
@@ -637,13 +672,13 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, transparent, #d4af37 50%, transparent);
+            background: linear-gradient(90deg, transparent, var(--dourado) 50%, transparent);
             opacity: 0;
             transition: opacity 0.5s;
         }
 
         .plano-card:hover {
-            border-color: #d4af37;
+            border-color: var(--dourado);
             box-shadow: 0 25px 60px rgba(26, 58, 82, 0.15);
             transform: translateY(-10px);
         }
@@ -653,13 +688,13 @@
         }
 
         .plano-premium {
-            border: 2px solid #d4af37;
+            border: 2px solid var(--dourado);
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.04) 0%, transparent 100%);
         }
 
         .premium-badge {
-            background-color: #d4af37;
-            color: #1a3a52;
+            background-color: var(--dourado);
+            color: var(--azul);
             padding: 10px 20px;
             border-radius: 6px;
             font-size: 12px;
@@ -670,16 +705,18 @@
         }
 
         .plano-titulo {
-            font-size: 26px;
-            font-weight: 700;
-            color: #1a3a52;
-            margin-bottom: 16px;
+            font-size: 22px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            margin-bottom: 12px;
         }
 
         .plano-descricao {
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 40px;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--cinza);
+            margin-bottom: 32px;
             line-height: 1.7;
         }
 
@@ -694,7 +731,7 @@
         .plano-parcelamento {
             font-size: 34px;
             font-weight: 900;
-            color: #d4af37;
+            color: var(--dourado);
             margin-bottom: 8px;
             letter-spacing: -0.5px;
             line-height: 1.1;
@@ -720,7 +757,7 @@
 
         .plano-avista {
             font-size: 18px;
-            color: #1a3a52;
+            color: var(--azul);
             font-weight: 700;
         }
 
@@ -755,7 +792,7 @@
         }
 
         .faq-item:hover {
-            border-color: #d4af37;
+            border-color: var(--dourado);
         }
 
         .faq-pergunta {
@@ -765,9 +802,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
-            color: #1a3a52;
-            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            font-size: 15px;
             transition: all 0.3s ease;
         }
 
@@ -777,7 +815,7 @@
 
         .faq-icon {
             font-size: 18px;
-            color: #d4af37;
+            color: var(--dourado);
             margin-right: 12px;
             flex-shrink: 0;
         }
@@ -815,10 +853,11 @@
 
         /* ===== FOOTER ===== */
         footer {
-            background-color: #1a3a52;
-            color: white;
+            background-color: var(--azul);
+            color: var(--branco);
             padding: 50px 24px;
             text-align: center;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .footer-content {
@@ -830,7 +869,7 @@
             font-size: 26px;
             font-weight: 700;
             margin-bottom: 28px;
-            color: #d4af37;
+            color: var(--dourado);
         }
 
         .footer-links {
@@ -849,7 +888,7 @@
         }
 
         .footer-links a:hover {
-            color: #d4af37;
+            color: var(--dourado);
         }
 
         .footer-copy {
@@ -881,7 +920,7 @@
         }
         .modal-box h2 {
             font-size: 24px;
-            color: #1a3a52;
+            color: var(--azul);
             margin-bottom: 20px;
             text-align: left;
         }
@@ -893,7 +932,7 @@
             margin-bottom: 12px;
         }
         .modal-box ul { padding-left: 20px; margin-bottom: 12px; }
-        .modal-box h3 { font-size: 16px; color: #1a3a52; margin: 20px 0 8px; }
+        .modal-box h3 { font-size: 16px; color: var(--azul); margin: 20px 0 8px; }
         .modal-close {
             position: absolute;
             top: 16px;
@@ -905,7 +944,7 @@
             border: none;
             line-height: 1;
         }
-        .modal-close:hover { color: #1a3a52; }
+        .modal-close:hover { color: var(--azul); }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
@@ -987,7 +1026,7 @@
     </section>
 
     <!-- TICKER ANIMADO -->
-    <a href="https://pay.hotmart.com/I93630334B?off=3dbt42ga&&bid=1782321577114" target="_blank" style="display:block; background:#1a3a52; padding: 14px 0; overflow:hidden; text-decoration:none;">
+    <a href="https://pay.hotmart.com/I93630334B?off=3dbt42ga&&bid=1782321577114" target="_blank" style="display:block; background:var(--azul); padding: 14px 0; overflow:hidden; text-decoration:none;">
         <div class="ticker-container">
             <div class="ticker-content">
                 <span class="ticker-item" style="color:#fff;">
@@ -1085,7 +1124,7 @@
 
     <!-- WHATSAPP CTA após módulos -->
     <div class="whatsapp-section">
-        <p style="font-weight:700; color:#1a3a52; font-size:22px;">Tem dúvidas sobre o método?</p>
+        <p style="font-weight:700; color:var(--azul); font-size:22px;">Tem dúvidas sobre o método?</p>
         <p>Fale diretamente com a equipe do Vitor Bonilha pelo WhatsApp.</p>
         <a href="https://wa.me/5544991159319?text=Olá!%20Tenho%20interesse%20no%20Método%20Salva%20Boni%20e%20gostaria%20de%20receber%20mais%20informações." target="_blank" class="whatsapp-btn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1216,7 +1255,7 @@
 
     <!-- WHATSAPP CTA após planos -->
     <div class="whatsapp-section">
-        <p style="font-weight:700; color:#1a3a52; font-size:22px;">Ainda tem dúvidas sobre qual plano escolher?</p>
+        <p style="font-weight:700; color:var(--azul); font-size:22px;">Ainda tem dúvidas sobre qual plano escolher?</p>
         <p>Entre em contato e a equipe do Vitor vai te ajudar a decidir.</p>
         <a href="https://wa.me/5544991159319?text=Olá!%20Tenho%20interesse%20no%20Método%20Salva%20Boni%20e%20gostaria%20de%20receber%20mais%20informações." target="_blank" class="whatsapp-btn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
