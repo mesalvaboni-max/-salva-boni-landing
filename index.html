@@ -981,39 +981,78 @@
         .modal-close:hover { color: var(--azul); }
 
         /* ===== POPUP QUIZZES (entrada / saída) ===== */
-        .quiz-popup-beneficios {
-            list-style: none;
-            margin: 20px 0 28px;
+        .quiz-popup-box {
+            max-width: 620px;
+            padding: 34px 30px;
+        }
+        .quiz-popup-box h2 {
+            font-size: 21px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .quiz-popup-intro {
+            font-size: 14px;
+            color: #666;
+            text-align: left;
+            line-height: 1.5;
+            margin-bottom: 22px;
+        }
+        .quiz-popup-blocos {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px 20px;
+            gap: 14px;
         }
-        .quiz-popup-beneficios li {
-            font-size: 14px;
-            color: #555;
-            padding-left: 22px;
-            position: relative;
+        .quiz-popup-bloco {
+            border: 1.5px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 18px 16px;
+            display: flex;
+            flex-direction: column;
+        }
+        .quiz-popup-bloco-destaque {
+            border-color: var(--dourado);
+            background: linear-gradient(180deg, rgba(164,135,58,0.07) 0%, rgba(164,135,58,0.02) 100%);
+        }
+        .quiz-popup-bloco-titulo {
+            font-size: 15px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            margin-bottom: 6px;
+        }
+        .quiz-popup-bloco-texto {
+            font-size: 12.5px;
+            color: #666;
             line-height: 1.5;
+            text-align: left;
+            margin-bottom: 10px;
         }
-        .quiz-popup-beneficios li::before {
+        .quiz-popup-bloco-lista {
+            list-style: none;
+            margin-bottom: 14px;
+        }
+        .quiz-popup-bloco-lista li {
+            font-size: 12.5px;
+            color: #555;
+            padding-left: 18px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+        .quiz-popup-bloco-lista li::before {
             content: '✓';
             position: absolute;
             left: 0;
             color: var(--dourado);
             font-weight: 700;
         }
-        .quiz-popup-ctas {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
         .quiz-popup-btn {
+            margin-top: auto;
             display: block;
             text-align: center;
-            padding: 15px 20px;
+            padding: 12px 14px;
             border-radius: 6px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -1139,7 +1178,8 @@
             .modal-box { padding: 28px 20px; }
             .faq-pergunta { padding: 18px 16px; font-size: 14px; }
             .faq-item.active .faq-resposta { padding: 18px 16px; }
-            .quiz-popup-beneficios { grid-template-columns: 1fr; }
+            .quiz-popup-box { padding: 26px 20px; }
+            .quiz-popup-blocos { grid-template-columns: 1fr; }
             .quizzes-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 28px; }
             .quiz-card { padding: 28px 22px; }
         }
@@ -1446,7 +1486,7 @@
                         <li>Seu principal ponto de atenção</li>
                         <li>O próximo passo recomendado para você</li>
                     </ul>
-                    <a href="https://trilha.salvaboni.com.br" target="_blank" class="cta-button">Fazer o diagnóstico</a>
+                    <a href="https://trilha.salvaboni.com.br" target="_blank" class="cta-button">Iniciar meu diagnóstico</a>
                 </div>
 
                 <div class="quiz-card">
@@ -1458,7 +1498,7 @@
                         <li>Descubra a ordem certa de leitura</li>
                         <li>Conclua a trilha em até 4 dias</li>
                     </ul>
-                    <a href="https://ebook.salvaboni.com.br" target="_blank" class="cta-button">Acessar a trilha de e-books</a>
+                    <a href="https://ebook.salvaboni.com.br" target="_blank" class="cta-button">Acessar trilha de e-books</a>
                 </div>
             </div>
         </div>
@@ -1613,19 +1653,31 @@
 
     <!-- MODAL QUIZZES (pop-up de entrada / intenção de saída) -->
     <div class="modal-overlay" id="modal-quizzes">
-        <div class="modal-box">
+        <div class="modal-box quiz-popup-box">
             <button class="modal-close" onclick="document.getElementById('modal-quizzes').classList.remove('active')">×</button>
-            <h2>Antes de continuar, dois recursos gratuitos podem te ajudar agora</h2>
-            <ul class="quiz-popup-beneficios">
-                <li>Conteúdo 100% gratuito</li>
-                <li>Resultado imediato</li>
-                <li>Diagnóstico personalizado</li>
-                <li>Trilha de e-books guiada</li>
-                <li>Tudo direto pelo site, sem burocracia</li>
-            </ul>
-            <div class="quiz-popup-ctas">
-                <a href="https://trilha.salvaboni.com.br" target="_blank" class="quiz-popup-btn quiz-popup-btn-primario">Fazer diagnóstico financeiro</a>
-                <a href="https://ebook.salvaboni.com.br" target="_blank" class="quiz-popup-btn quiz-popup-btn-secundario">Acessar trilha de e-books</a>
+            <h2>Comece pelo caminho mais indicado para o seu momento na Medicina.</h2>
+            <p class="quiz-popup-intro">Descubra o quanto sua vida financeira está preparada para acompanhar sua carreira médica.</p>
+
+            <div class="quiz-popup-blocos">
+                <div class="quiz-popup-bloco quiz-popup-bloco-destaque">
+                    <div class="quiz-popup-bloco-titulo">Diagnóstico financeiro</div>
+                    <div class="quiz-popup-bloco-texto">Responda algumas perguntas e receba uma análise de acordo com seu momento profissional.</div>
+                    <ul class="quiz-popup-bloco-lista">
+                        <li>Resultado imediato</li>
+                        <li>Conteúdo gratuito</li>
+                    </ul>
+                    <a href="https://trilha.salvaboni.com.br/" target="_blank" class="quiz-popup-btn quiz-popup-btn-primario">Iniciar meu diagnóstico</a>
+                </div>
+
+                <div class="quiz-popup-bloco">
+                    <div class="quiz-popup-bloco-titulo">Trilha de e-books</div>
+                    <div class="quiz-popup-bloco-texto">Acesse uma sequência de conteúdos para começar a organizar melhor suas decisões financeiras como médico(a).</div>
+                    <ul class="quiz-popup-bloco-lista">
+                        <li>Conteúdos gratuitos</li>
+                        <li>Leitura guiada em até 4 dias</li>
+                    </ul>
+                    <a href="https://ebook.salvaboni.com.br/" target="_blank" class="quiz-popup-btn quiz-popup-btn-secundario">Acessar trilha de e-books</a>
+                </div>
             </div>
         </div>
     </div>
