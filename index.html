@@ -980,6 +980,116 @@
         }
         .modal-close:hover { color: var(--azul); }
 
+        /* ===== POPUP QUIZZES (entrada / saída) ===== */
+        .quiz-popup-beneficios {
+            list-style: none;
+            margin: 20px 0 28px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 20px;
+        }
+        .quiz-popup-beneficios li {
+            font-size: 14px;
+            color: #555;
+            padding-left: 22px;
+            position: relative;
+            line-height: 1.5;
+        }
+        .quiz-popup-beneficios li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--dourado);
+            font-weight: 700;
+        }
+        .quiz-popup-ctas {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .quiz-popup-btn {
+            display: block;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .quiz-popup-btn-primario {
+            background-color: var(--dourado);
+            color: var(--azul) !important;
+        }
+        .quiz-popup-btn-primario:hover { background-color: var(--dourado-hover); }
+        .quiz-popup-btn-secundario {
+            background: transparent;
+            color: var(--azul) !important;
+            border: 1.5px solid var(--azul);
+        }
+        .quiz-popup-btn-secundario:hover { background: rgba(31,75,122,0.06); }
+
+        /* ===== SEÇÃO: DIAGNÓSTICO + TRILHA DE E-BOOKS ===== */
+        .section-quizzes {
+            background: linear-gradient(180deg, #f8f9f9 0%, #ffffff 100%);
+        }
+        .quizzes-grid {
+            max-width: 950px;
+            margin: 40px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        .quiz-card {
+            background: white;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 36px 32px;
+            transition: all 0.4s ease;
+        }
+        .quiz-card:hover {
+            border-color: var(--dourado);
+            box-shadow: 0 20px 50px rgba(26, 58, 82, 0.1);
+            transform: translateY(-6px);
+        }
+        .quiz-card-titulo {
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            margin-bottom: 8px;
+        }
+        .quiz-card-subtitulo {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .quiz-card-lista {
+            list-style: none;
+            margin-bottom: 28px;
+        }
+        .quiz-card-lista li {
+            font-size: 14px;
+            color: #555;
+            padding-left: 22px;
+            position: relative;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .quiz-card-lista li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--dourado);
+            font-weight: 700;
+        }
+        .quiz-card .cta-button {
+            width: 100%;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .hero { padding: 120px 20px 70px; min-height: auto; }
@@ -1029,6 +1139,9 @@
             .modal-box { padding: 28px 20px; }
             .faq-pergunta { padding: 18px 16px; font-size: 14px; }
             .faq-item.active .faq-resposta { padding: 18px 16px; }
+            .quiz-popup-beneficios { grid-template-columns: 1fr; }
+            .quizzes-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 28px; }
+            .quiz-card { padding: 28px 22px; }
         }
     </style>
 </head>
@@ -1318,6 +1431,39 @@
         </a>
     </div>
 
+    <!-- QUIZZES: DIAGNÓSTICO E TRILHA DE E-BOOKS -->
+    <section id="quizzes" class="section section-quizzes">
+        <div style="max-width: 950px; margin: 0 auto;">
+            <h2>Ainda não é hora de começar o curso? Comece por aqui, de graça.</h2>
+            <h3>Dois caminhos gratuitos para dar o primeiro passo na sua vida financeira.</h3>
+
+            <div class="quizzes-grid">
+                <div class="quiz-card">
+                    <div class="quiz-card-titulo">Diagnóstico Financeiro</div>
+                    <div class="quiz-card-subtitulo">Para quem quer descobrir por onde começar.</div>
+                    <ul class="quiz-card-lista">
+                        <li>Seu estágio financeiro atual</li>
+                        <li>Seu principal ponto de atenção</li>
+                        <li>O próximo passo recomendado para você</li>
+                    </ul>
+                    <a href="https://trilha.salvaboni.com.br" target="_blank" class="cta-button">Fazer o diagnóstico</a>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="quiz-card-titulo">Trilha Gratuita de E-books</div>
+                    <div class="quiz-card-subtitulo">Para quem quer aprender no seu ritmo.</div>
+                    <ul class="quiz-card-lista">
+                        <li>Aprenda os fundamentos da vida financeira</li>
+                        <li>Receba todos os materiais gratuitamente</li>
+                        <li>Descubra a ordem certa de leitura</li>
+                        <li>Conclua a trilha em até 4 dias</li>
+                    </ul>
+                    <a href="https://ebook.salvaboni.com.br" target="_blank" class="cta-button">Acessar a trilha de e-books</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section id="faq" class="section section-faq">
         <div class="faq-container">
@@ -1465,6 +1611,25 @@
         </div>
     </div>
 
+    <!-- MODAL QUIZZES (pop-up de entrada / intenção de saída) -->
+    <div class="modal-overlay" id="modal-quizzes">
+        <div class="modal-box">
+            <button class="modal-close" onclick="document.getElementById('modal-quizzes').classList.remove('active')">×</button>
+            <h2>Antes de continuar, dois recursos gratuitos podem te ajudar agora</h2>
+            <ul class="quiz-popup-beneficios">
+                <li>Conteúdo 100% gratuito</li>
+                <li>Resultado imediato</li>
+                <li>Diagnóstico personalizado</li>
+                <li>Trilha de e-books guiada</li>
+                <li>Tudo direto pelo site, sem burocracia</li>
+            </ul>
+            <div class="quiz-popup-ctas">
+                <a href="https://trilha.salvaboni.com.br" target="_blank" class="quiz-popup-btn quiz-popup-btn-primario">Fazer diagnóstico financeiro</a>
+                <a href="https://ebook.salvaboni.com.br" target="_blank" class="quiz-popup-btn quiz-popup-btn-secundario">Acessar trilha de e-books</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Menu hambúrguer mobile
         const hamburger = document.getElementById('hamburger');
@@ -1507,6 +1672,29 @@
                 item.classList.toggle('active');
             });
         });
+
+        // Pop-up quizzes: intenção de saída (desktop) ou tempo na página (mobile)
+        (function() {
+            const popup = document.getElementById('modal-quizzes');
+            if (!popup) return;
+
+            function showPopup() {
+                if (sessionStorage.getItem('quizPopupShown')) return;
+                popup.classList.add('active');
+                sessionStorage.setItem('quizPopupShown', '1');
+            }
+
+            if (sessionStorage.getItem('quizPopupShown')) return;
+
+            const isTouch = matchMedia('(pointer: coarse)').matches;
+            if (isTouch) {
+                setTimeout(showPopup, 25000);
+            } else {
+                document.addEventListener('mouseout', function(e) {
+                    if (!e.relatedTarget && e.clientY <= 0) showPopup();
+                });
+            }
+        })();
     </script>
 </body>
 </html>
