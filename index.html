@@ -1655,8 +1655,8 @@
     <div class="modal-overlay" id="modal-quizzes">
         <div class="modal-box quiz-popup-box">
             <button class="modal-close" onclick="document.getElementById('modal-quizzes').classList.remove('active')">×</button>
-            <h2>Comece pelo caminho mais indicado para o seu momento na Medicina.</h2>
-            <p class="quiz-popup-intro">Descubra o quanto sua vida financeira está preparada para acompanhar sua carreira médica.</p>
+            <h2>Ainda não é o momento de começar pelo curso?</h2>
+            <p class="quiz-popup-intro">Você pode começar por um caminho gratuito para entender melhor sua vida financeira como médico(a).</p>
 
             <div class="quiz-popup-blocos">
                 <div class="quiz-popup-bloco quiz-popup-bloco-destaque">
@@ -1738,9 +1738,9 @@
 
             if (sessionStorage.getItem('quizPopupShown')) return;
 
-            const isTouch = matchMedia('(pointer: coarse)').matches;
-            if (isTouch) {
-                setTimeout(showPopup, 25000);
+            const isMobile = matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768;
+            if (isMobile) {
+                setTimeout(showPopup, 15000);
             } else {
                 document.addEventListener('mouseout', function(e) {
                     if (!e.relatedTarget && e.clientY <= 0) showPopup();
