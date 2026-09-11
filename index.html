@@ -409,6 +409,29 @@
             text-align: center;
         }
 
+        .problema-bullets {
+            list-style: none;
+            display: inline-block;
+            text-align: left;
+            margin: 28px auto 0;
+        }
+
+        .problema-bullets li {
+            font-size: 15px;
+            color: #555;
+            padding-left: 26px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .problema-bullets li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--dourado);
+            font-weight: 700;
+        }
+
         /* ===== VSL ===== */
         .vsl-placeholder {
             background: linear-gradient(135deg, #e8e8e8 0%, #d8d8d8 100%);
@@ -1197,9 +1220,11 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Construa liberdade financeira desde o início da carreira médica.</h1>
-            <p>Aprenda a investir com mais clareza, organizar seus ganhos e tomar decisões financeiras melhores sobre impostos, seguros e patrimônio.</p>
-            <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="cta-button" style="text-decoration:none; display:inline-block;">Quero construir minha liberdade financeira</a>
+            <h1>Pare de se matar em plantões!</h1>
+            <p style="margin-bottom: 20px;">Você ganha como médico. Mas o seu dinheiro já está construindo a vida que você quer?</p>
+            <p style="margin-bottom: 20px;">A falta de planejamento e organização financeira é o maior vilão da carreira médica.</p>
+            <p>A realidade de muitos médicos hoje é: quanto mais plantões exaustivos, menos dinheiro investido e mais dívidas altas.</p>
+            <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="cta-button" style="text-decoration:none; display:inline-block;">Quero organizar as minhas finanças</a>
         </div>
     </section>
 
@@ -1230,12 +1255,17 @@
     <!-- PROBLEMA -->
     <section class="section section-problema">
         <div class="problema-content">
-            <h2>Você foi preparado para cuidar da vida dos outros.</h2>
-            <h3>Mas ninguém te ensinou a cuidar da sua vida financeira.</h3>
+            <h2>Nenhum aluno de medicina teve uma matéria de finanças na faculdade.</h2>
 
-            <p>No início da carreira médica, o dinheiro começa a entrar de formas diferentes e, junto com ele, vêm decisões importantes: impostos, investimentos, seguros, financiamentos, patrimônio e futuro.</p>
-            <p>Sem direção, decisões importantes acabam sendo adiadas ou tomadas no impulso.</p>
-            <p>Foi justamente para mudar este cenário que Vitor Bonilha criou o <span class="vitor-destaque">Método Salva Boni</span>.</p>
+            <p>Por isso, o <span class="vitor-destaque">Método Salva Boni</span> mostra, em uma sequência prática, como organizar renda, impostos, reserva, proteção, investimentos e patrimônio para tomar decisões melhores ao longo da carreira médica.</p>
+
+            <ul class="problema-bullets">
+                <li>13 horas de conteúdo prático;</li>
+                <li>acesso por 12 meses;</li>
+                <li>8 pilares da vida financeira médica;</li>
+                <li>garantia de 7 dias;</li>
+                <li>conteúdo no seu ritmo, com suporte dentro da plataforma.</li>
+            </ul>
         </div>
     </section>
 
