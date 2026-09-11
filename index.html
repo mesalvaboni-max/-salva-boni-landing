@@ -435,6 +435,106 @@
             font-weight: 700;
         }
 
+        /* ===== REFLEXÃO / TABELA PROGRESSO ===== */
+        .section-reflexao {
+            background: linear-gradient(180deg, #f7f9fb 0%, #ffffff 100%);
+        }
+
+        .reflexao-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .reflexao-quote {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--azul);
+            text-align: center;
+            line-height: 1.4;
+            max-width: 760px;
+            margin: 0 auto 32px;
+            padding-bottom: 28px;
+            border-bottom: 2px solid var(--dourado);
+        }
+
+        .reflexao-content p {
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reflexao-content p:first-of-type {
+            font-weight: 600;
+            color: var(--azul);
+        }
+
+        .progresso-tabela {
+            max-width: 900px;
+            margin: 44px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 1px solid #e5e5e5;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(26, 58, 82, 0.08);
+        }
+
+        .progresso-cabecalho {
+            background: var(--azul);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 18px 20px;
+        }
+
+        .progresso-cabecalho-destaque {
+            background: var(--azul-escuro);
+        }
+
+        .progresso-item {
+            padding: 18px 24px 18px 46px;
+            font-size: 15px;
+            line-height: 1.6;
+            border-top: 1px solid #eee;
+            position: relative;
+        }
+
+        .progresso-item::before {
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .progresso-parece {
+            color: #888;
+            background: #fafafa;
+            border-right: 1px solid #eee;
+        }
+
+        .progresso-parece::before {
+            content: '✕';
+            color: #c2c2c2;
+        }
+
+        .progresso-constroi {
+            color: var(--azul);
+            font-weight: 500;
+            background: #fff;
+        }
+
+        .progresso-constroi::before {
+            content: '✓';
+            color: var(--dourado);
+        }
+
         /* ===== VSL ===== */
         .vsl-placeholder {
             background: linear-gradient(135deg, #e8e8e8 0%, #d8d8d8 100%);
@@ -1189,6 +1289,11 @@
             .section h3 { font-size: 16px; margin-bottom: 24px; }
             .section p { font-size: 15px; margin-bottom: 16px; }
             .section-problema { padding-top: 40px; }
+            .reflexao-quote { font-size: 21px; padding-bottom: 20px; margin-bottom: 24px; }
+            .progresso-tabela { grid-template-columns: 1fr; margin-top: 32px; }
+            .progresso-parece { border-right: none; }
+            .progresso-cabecalho { font-size: 12px; padding: 14px 16px; }
+            .progresso-item { padding: 16px 20px 16px 44px; font-size: 14px; }
             .vitor-content { grid-template-columns: 1fr; gap: 24px; }
             .vitor-foto { height: 300px; }
             .vitor-texto h2 { font-size: 24px; }
@@ -1318,6 +1423,36 @@
                 <li>garantia de 7 dias;</li>
                 <li>conteúdo no seu ritmo, com suporte dentro da plataforma.</li>
             </ul>
+        </div>
+    </section>
+
+    <!-- REFLEXÃO / TABELA PROGRESSO -->
+    <section class="section section-reflexao">
+        <div class="reflexao-content">
+            <div class="reflexao-quote">"Se eu precisar parar por alguns meses, quanto tempo a minha vida consegue continuar?"</div>
+
+            <p>O plantão resolve o mês, mas não vai resolver a sua vida financeira.</p>
+            <p>Você pode aumentar sua renda por anos e continuar dependendo da próxima escala para manter o padrão de vida. O dinheiro entra. Uma parte vai para impostos. Outra parte cobre despesas, financiamentos e decisões tomadas.</p>
+
+            <div class="progresso-tabela">
+                <div class="progresso-cabecalho">O que parece progresso</div>
+                <div class="progresso-cabecalho progresso-cabecalho-destaque">O que precisa ser construído</div>
+
+                <div class="progresso-item progresso-parece">Fazer mais plantões quando falta dinheiro</div>
+                <div class="progresso-item progresso-constroi">Ter uma estrutura que não dependa sempre do próximo plantão</div>
+
+                <div class="progresso-item progresso-parece">Ter dinheiro investido</div>
+                <div class="progresso-item progresso-constroi">Saber por que cada investimento existe</div>
+
+                <div class="progresso-item progresso-parece">Aumentar o faturamento</div>
+                <div class="progresso-item progresso-constroi">Fazer a renda se transformar em patrimônio</div>
+
+                <div class="progresso-item progresso-parece">Ter contador, banco e assessor</div>
+                <div class="progresso-item progresso-constroi">Ter clareza sobre a decisão final</div>
+
+                <div class="progresso-item progresso-parece">Manter um padrão de vida alto</div>
+                <div class="progresso-item progresso-constroi">Poder escolher quanto e como trabalhar</div>
+            </div>
         </div>
     </section>
 
