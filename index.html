@@ -497,6 +497,10 @@
             background: var(--azul-escuro);
         }
 
+        .progresso-legenda-mobile {
+            display: none;
+        }
+
         .progresso-item {
             padding: 18px 24px 18px 46px;
             font-size: 15px;
@@ -1290,10 +1294,25 @@
             .section p { font-size: 15px; margin-bottom: 16px; }
             .section-problema { padding-top: 40px; }
             .reflexao-quote { font-size: 21px; padding-bottom: 20px; margin-bottom: 24px; }
-            .progresso-tabela { grid-template-columns: 1fr; margin-top: 32px; }
+            .progresso-tabela { grid-template-columns: 1fr; margin-top: 20px; }
             .progresso-parece { border-right: none; }
-            .progresso-cabecalho { font-size: 12px; padding: 14px 16px; }
+            .progresso-cabecalho { display: none; }
             .progresso-item { padding: 16px 20px 16px 44px; font-size: 14px; }
+            .progresso-legenda-mobile {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px 20px;
+                margin: 32px 0 0;
+                font-size: 12px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.2px;
+                color: var(--azul);
+            }
+            .progresso-legenda-mobile span { display: inline-flex; align-items: center; gap: 6px; }
+            .progresso-legenda-x { color: #b8b8b8; font-weight: 700; }
+            .progresso-legenda-check { color: var(--dourado); font-weight: 700; }
             .vitor-content { grid-template-columns: 1fr; gap: 24px; }
             .vitor-foto { height: 300px; }
             .vitor-texto h2 { font-size: 24px; }
@@ -1433,6 +1452,11 @@
 
             <p>O plantão resolve o mês, mas não vai resolver a sua vida financeira.</p>
             <p>Você pode aumentar sua renda por anos e continuar dependendo da próxima escala para manter o padrão de vida. O dinheiro entra. Uma parte vai para impostos. Outra parte cobre despesas, financiamentos e decisões tomadas.</p>
+
+            <div class="progresso-legenda-mobile">
+                <span><span class="progresso-legenda-x">✕</span> O que parece progresso</span>
+                <span><span class="progresso-legenda-check">✓</span> O que precisa ser construído</span>
+            </div>
 
             <div class="progresso-tabela">
                 <div class="progresso-cabecalho">O que parece progresso</div>
