@@ -470,71 +470,78 @@
             color: var(--azul);
         }
 
-        .progresso-tabela {
-            max-width: 900px;
+        .progresso-cards {
+            max-width: 860px;
             margin: 44px auto 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            border: 1px solid #e5e5e5;
+            gap: 24px;
+        }
+
+        .progresso-card {
             border-radius: 14px;
-            overflow: hidden;
+            padding: 32px 28px;
+        }
+
+        .progresso-card-x {
+            background: #f7f7f8;
+            border: 1.5px solid #ececec;
+        }
+
+        .progresso-card-check {
+            background: #fff;
+            border: 1.5px solid var(--dourado);
             box-shadow: 0 16px 40px rgba(26, 58, 82, 0.08);
         }
 
-        .progresso-cabecalho {
-            background: var(--azul);
-            color: #fff;
+        .progresso-card-titulo {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 15px;
             letter-spacing: 0.3px;
             text-transform: uppercase;
-            text-align: center;
-            padding: 18px 20px;
+            margin-bottom: 20px;
         }
 
-        .progresso-cabecalho-destaque {
-            background: var(--azul-escuro);
+        .progresso-card-x .progresso-card-titulo { color: #6b6b6b; }
+        .progresso-card-check .progresso-card-titulo { color: var(--azul); }
+
+        .progresso-card ul {
+            list-style: none;
         }
 
-        .progresso-legenda-mobile {
-            display: none;
-        }
-
-        .progresso-item {
-            padding: 18px 24px 18px 46px;
-            font-size: 15px;
-            line-height: 1.6;
-            border-top: 1px solid #eee;
+        .progresso-card li {
             position: relative;
-        }
-
-        .progresso-item::before {
-            position: absolute;
-            left: 20px;
-            top: 18px;
-            font-weight: 700;
+            padding-left: 28px;
+            margin-bottom: 16px;
             font-size: 15px;
+            line-height: 1.5;
         }
 
-        .progresso-parece {
-            color: #888;
-            background: #fafafa;
-            border-right: 1px solid #eee;
+        .progresso-card li:last-child { margin-bottom: 0; }
+
+        .progresso-card li::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 700;
         }
 
-        .progresso-parece::before {
+        .progresso-card-x li {
+            color: #555;
+        }
+
+        .progresso-card-x li::before {
             content: '✕';
-            color: #c2c2c2;
+            color: #c0392b;
         }
 
-        .progresso-constroi {
+        .progresso-card-check li {
             color: var(--azul);
             font-weight: 500;
-            background: #fff;
         }
 
-        .progresso-constroi::before {
+        .progresso-card-check li::before {
             content: '✓';
             color: var(--dourado);
         }
@@ -580,69 +587,68 @@
             margin-left: 8px;
         }
 
-        /* ===== MÓDULOS ===== */
-        .modulos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .modulo-card {
-            background: white;
-            border: 1.5px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 28px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+        /* ===== MÓDULOS / PILARES ===== */
+        .pilares-tabela {
+            width: 100%;
+            max-width: 1000px;
+            margin: 32px auto 0;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 14px;
             overflow: hidden;
+            box-shadow: 0 16px 40px rgba(26, 58, 82, 0.08);
+            border: 1px solid #ececec;
         }
 
-        .modulo-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--dourado), transparent);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .modulo-card:hover {
-            border-color: var(--dourado);
-            box-shadow: 0 20px 50px rgba(26, 58, 82, 0.1);
-            transform: translateY(-8px);
-        }
-
-        .modulo-card:hover::before {
-            opacity: 1;
-        }
-
-        .modulo-numero {
-            font-size: 48px;
-            font-weight: 800;
-            color: var(--dourado);
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-        }
-
-        .modulo-titulo {
-            font-size: 15px;
-            font-weight: 600;
+        .pilares-tabela th {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--azul-escuro) 100%);
+            color: #fff;
             font-family: 'Montserrat', sans-serif;
-            color: var(--azul);
-            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            text-align: left;
+            padding: 16px 22px;
         }
 
-        .modulo-descricao {
-            font-size: 13px;
-            font-weight: 400;
+        .pilares-tabela td {
+            padding: 18px 22px;
+            font-size: 14px;
             color: #555;
-            line-height: 1.7;
+            line-height: 1.6;
+            border-top: 1px solid #eee;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .pilares-tabela td:first-child {
+            color: var(--azul);
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            white-space: nowrap;
+        }
+
+        .pilar-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--dourado);
+            color: var(--azul);
+            font-weight: 800;
+            font-size: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            flex-shrink: 0;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+        }
+
+        .pilares-tabela tbody tr:nth-child(even) {
+            background: rgba(31, 75, 122, 0.025);
         }
 
         /* ===== VITOR ===== */
@@ -807,138 +813,271 @@
 
         /* ===== PLANOS ===== */
         .planos-container {
-            max-width: 950px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        .planos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+        /* ===== OFERTA PRINCIPAL (Essencial) ===== */
+        .oferta-principal-card {
+            background: #fff;
+            border: 1px solid #ececec;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(26, 58, 82, 0.1);
+            padding: 44px 40px;
             margin-top: 32px;
-        }
-
-        .plano-card {
-            background: white;
-            border: 1.5px solid #e5e5e5;
-            border-radius: 14px;
-            padding: 48px 40px;
             text-align: center;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
         }
 
-        .plano-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--dourado) 50%, transparent);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .plano-card:hover {
-            border-color: var(--dourado);
-            box-shadow: 0 25px 60px rgba(26, 58, 82, 0.15);
-            transform: translateY(-10px);
-        }
-
-        .plano-card:hover::before {
-            opacity: 1;
-        }
-
-        .plano-premium {
-            border: 2px solid var(--dourado);
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.04) 0%, transparent 100%);
-        }
-
-        .premium-badge {
-            background-color: var(--dourado);
-            color: var(--azul);
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            display: inline-block;
-            letter-spacing: 1.2px;
-        }
-
-        .plano-titulo {
-            font-size: 22px;
-            font-weight: 600;
+        .oferta-plano-titulo {
             font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
             color: var(--azul);
             margin-bottom: 12px;
         }
 
-        .plano-descricao {
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--cinza);
-            margin-bottom: 32px;
+        .oferta-plano-desc {
+            font-size: 15px;
+            color: #666;
             line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto 28px;
         }
 
-        .plano-preco-box {
+        .oferta-recebe-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--azul);
+            text-align: left;
+            margin-bottom: 12px;
+        }
+
+        .oferta-lista {
+            list-style: none;
+            text-align: left;
             margin-bottom: 32px;
-            padding: 28px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.06) 100%);
-            border-radius: 10px;
-            border: 1.5px solid rgba(212, 175, 55, 0.25);
         }
 
-        .plano-parcelamento {
-            font-size: 34px;
+        .oferta-lista li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .oferta-lista li:last-child { margin-bottom: 0; }
+
+        .oferta-lista li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--dourado);
+            font-weight: 800;
+        }
+
+        .oferta-preco-box {
+            background: linear-gradient(135deg, rgba(164, 135, 58, 0.1) 0%, rgba(164, 135, 58, 0.04) 100%);
+            border: 1.5px solid rgba(164, 135, 58, 0.25);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .oferta-preco-parcela {
+            font-size: 30px;
             font-weight: 900;
             color: var(--dourado);
-            margin-bottom: 8px;
             letter-spacing: -0.5px;
-            line-height: 1.1;
         }
 
-        .plano-parcela-label {
-            font-size: 12px;
+        .oferta-preco-parcela span {
+            font-size: 14px;
+            font-weight: 400;
             color: #999;
-            margin-bottom: 16px;
         }
 
-        .plano-divider {
-            height: 1px;
-            background: rgba(212, 175, 55, 0.2);
-            margin-bottom: 16px;
-        }
-
-        .plano-avista-label {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 6px;
-        }
-
-        .plano-avista {
-            font-size: 18px;
+        .oferta-preco-avista {
+            font-size: 14px;
             color: var(--azul);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .oferta-ancoragem {
+            font-size: 14px;
+            font-style: italic;
+            color: #777;
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto 28px;
+        }
+
+        .oferta-cta-principal {
+            width: 100%;
+            display: block;
+            text-decoration: none;
+            box-sizing: border-box;
+            padding: 20px 24px;
+            font-size: 16px;
+        }
+
+        .oferta-microcopy {
+            font-size: 12px;
+            color: #999;
+            margin-top: 16px;
+            letter-spacing: 0.2px;
+        }
+
+        /* ===== PLANO INDIVIDUAL (upgrade) ===== */
+        .oferta-individual-card {
+            border: 1.5px solid #e5e5e5;
+            border-radius: 16px;
+            padding: 36px 36px;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .oferta-individual-titulo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 19px;
             font-weight: 700;
+            color: var(--azul);
+            margin-bottom: 16px;
         }
 
-        .plano-lista {
-            text-align: left;
-            margin-bottom: 40px;
+        .oferta-individual-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto 14px;
         }
 
-        .plano-item {
+        .oferta-individual-preco {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--azul);
+            margin: 20px 0 24px;
+        }
+
+        .oferta-individual-preco span {
+            font-weight: 400;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .cta-button-secundario {
+            display: inline-block;
+            background: transparent;
+            color: var(--azul);
+            border: 1.5px solid var(--azul);
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-secundario:hover {
+            background: rgba(31, 75, 122, 0.06);
+        }
+
+        /* ===== COMPARAÇÃO COMPLETA DOS PLANOS ===== */
+        .planos-comparacao {
+            margin-top: 48px;
+        }
+
+        .planos-comparacao-titulo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--azul);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .planos-toggle-btn {
+            display: none;
+        }
+
+        .planos-tabela {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(26, 58, 82, 0.08);
+            border: 1px solid #ececec;
+        }
+
+        .planos-tabela th {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             font-size: 15px;
-            color: #555;
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+            padding: 18px 16px;
+            color: var(--azul);
+            background: #fafbfc;
         }
 
-        .plano-item:last-child {
-            border-bottom: none;
+        .planos-tabela th:first-child {
+            background: transparent;
+        }
+
+        .planos-tabela th.planos-tabela-destaque {
+            background: rgba(164, 135, 58, 0.1);
+            color: var(--azul);
+            position: relative;
+        }
+
+        .planos-tabela td {
+            padding: 16px;
+            font-size: 14px;
+            color: #555;
+            border-top: 1px solid #eee;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .planos-tabela td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: var(--azul);
+        }
+
+        .planos-tabela td.planos-tabela-destaque {
+            background: rgba(164, 135, 58, 0.05);
+        }
+
+        .planos-tabela tbody tr:nth-child(even) td {
+            background: #fafbfc;
+        }
+
+        .planos-tabela tbody tr:nth-child(even) td.planos-tabela-destaque {
+            background: rgba(164, 135, 58, 0.08);
+        }
+
+        .tp-sim {
+            color: var(--dourado);
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .tp-nao {
+            color: #ccc;
+            font-weight: 700;
+            font-size: 16px;
         }
 
         /* ===== FAQ ===== */
@@ -1294,34 +1433,41 @@
             .section p { font-size: 15px; margin-bottom: 16px; }
             .section-problema { padding-top: 40px; }
             .reflexao-quote { font-size: 21px; padding-bottom: 20px; margin-bottom: 24px; }
-            .progresso-tabela { grid-template-columns: 1fr; margin-top: 20px; }
-            .progresso-parece { border-right: none; }
-            .progresso-cabecalho { display: none; }
-            .progresso-item { padding: 16px 20px 16px 44px; font-size: 14px; }
-            .progresso-legenda-mobile {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 10px 20px;
-                margin: 32px 0 0;
-                font-size: 12px;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.2px;
-                color: var(--azul);
-            }
-            .progresso-legenda-mobile span { display: inline-flex; align-items: center; gap: 6px; }
-            .progresso-legenda-x { color: #b8b8b8; font-weight: 700; }
-            .progresso-legenda-check { color: var(--dourado); font-weight: 700; }
+            .progresso-cards { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+            .progresso-card { padding: 26px 22px; }
             .vitor-content { grid-template-columns: 1fr; gap: 24px; }
             .vitor-foto { height: 300px; }
             .vitor-texto h2 { font-size: 24px; }
             .vitor-texto p { font-size: 15px; margin-bottom: 14px; }
-            .modulos-grid { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
-            .modulo-card { padding: 20px 14px; }
-            .modulo-numero { font-size: 32px; margin-bottom: 8px; }
-            .modulo-titulo { font-size: 14px; margin-bottom: 8px; }
-            .modulo-descricao { font-size: 12px; }
+            .pilares-tabela { margin-top: 24px; box-shadow: none; border-radius: 0; border: none; background: transparent; border-collapse: separate; border-spacing: 0 14px; }
+            .pilares-tabela thead { display: none; }
+            .pilares-tabela, .pilares-tabela tbody, .pilares-tabela tr, .pilares-tabela td { display: block; width: 100%; }
+            .pilares-tabela tr {
+                padding: 20px 20px 16px;
+                background: #fff;
+                border: 1px solid #ececec;
+                border-radius: 12px;
+                box-shadow: 0 6px 20px rgba(26, 58, 82, 0.05);
+                margin-bottom: 14px;
+            }
+            .pilares-tabela tbody tr:nth-child(even) { background: #fff; }
+            .pilares-tabela td { padding: 0; border-top: none; font-size: 14px; }
+            .pilares-tabela td:first-child { font-size: 16px; margin-bottom: 2px; }
+            .pilares-tabela td:not(:first-child)::before {
+                content: attr(data-label);
+                display: block;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+                margin-top: 12px;
+                margin-bottom: 3px;
+            }
+            .pilares-tabela td:nth-child(2)::before,
+            .pilares-tabela td:nth-child(3)::before { color: #111; }
+            .pilares-tabela td:nth-child(2),
+            .pilares-tabela td:nth-child(3) { color: #777; font-weight: 400; }
             .depoimentos-video-wrap { max-width: 220px; margin-bottom: 24px; }
             .depoimentos-frase { font-size: 15px; margin-bottom: 24px; }
             .depoimentos-grid {
@@ -1339,9 +1485,83 @@
             .depoimento-card { flex: 0 0 78%; scroll-snap-align: center; padding: 20px 14px; }
             .depoimento-nome { font-size: 14px; }
             .depoimento-texto { font-size: 13px; }
-            .planos-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 32px; }
-            .plano-card { padding: 32px 24px; }
-            .plano-parcelamento { font-size: 26px; }
+            .oferta-principal-card { padding: 32px 22px; margin-top: 24px; }
+            .oferta-plano-titulo { font-size: 20px; }
+            .oferta-preco-parcela { font-size: 26px; }
+            .oferta-individual-card { padding: 28px 22px; }
+            .oferta-individual-titulo { font-size: 17px; }
+            .planos-comparacao { margin-top: 36px; }
+            .planos-comparacao-titulo { font-size: 19px; margin-bottom: 16px; }
+            .planos-toggle-btn {
+                display: block;
+                width: 100%;
+                background: transparent;
+                border: 1.5px dashed var(--azul);
+                color: var(--azul);
+                font-weight: 700;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+                padding: 14px;
+                border-radius: 8px;
+                cursor: pointer;
+                margin-bottom: 16px;
+                font-family: 'Montserrat', sans-serif;
+            }
+            .planos-tabela {
+                display: none;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+                border-collapse: separate;
+                border-spacing: 0;
+            }
+            .planos-tabela.planos-tabela-aberta { display: block; }
+            .planos-tabela thead { display: none; }
+            .planos-tabela, .planos-tabela tbody { width: 100%; }
+            .planos-tabela tbody { display: block; }
+            .planos-tabela tr {
+                display: flex;
+                flex-wrap: wrap;
+                background: #fff;
+                border: 1px solid #ececec;
+                border-radius: 10px;
+                box-shadow: 0 4px 14px rgba(26, 58, 82, 0.04);
+                padding: 12px 14px;
+                margin-bottom: 8px;
+            }
+            .planos-tabela td { display: block; border-top: none; padding: 0; text-align: left; }
+            .planos-tabela td:first-child { flex: 0 0 100%; font-size: 14px; margin-bottom: 6px; }
+            .planos-tabela td:first-child::after { content: ":"; }
+            .planos-tabela td:nth-child(2),
+            .planos-tabela td:nth-child(3) {
+                flex: 1 1 0;
+                min-width: 0;
+                text-align: left;
+                padding: 0;
+                font-size: 12.5px;
+                color: #555;
+            }
+            .planos-tabela td:nth-child(2) { margin-right: 6px; }
+            .planos-tabela td:nth-child(2)::before,
+            .planos-tabela td:nth-child(3)::before {
+                content: attr(data-label) " ";
+                display: inline;
+                font-size: 12px;
+                text-transform: none;
+                letter-spacing: normal;
+                font-weight: 600;
+                color: #666;
+            }
+            .planos-tabela .tp-sim,
+            .planos-tabela .tp-nao {
+                font-size: 14px;
+            }
+            .planos-tabela td.planos-tabela-destaque,
+            .planos-tabela tbody tr:nth-child(even) td,
+            .planos-tabela tbody tr:nth-child(even) td.planos-tabela-destaque {
+                background: transparent;
+            }
             .ticker-item { font-size: 13px; gap: 10px; }
             .ticker-badge { padding: 6px 12px; font-size: 12px; }
             .whatsapp-section { padding: 36px 18px; }
@@ -1453,29 +1673,28 @@
             <p>O plantão resolve o mês, mas não vai resolver a sua vida financeira.</p>
             <p>Você pode aumentar sua renda por anos e continuar dependendo da próxima escala para manter o padrão de vida. O dinheiro entra. Uma parte vai para impostos. Outra parte cobre despesas, financiamentos e decisões tomadas.</p>
 
-            <div class="progresso-legenda-mobile">
-                <span><span class="progresso-legenda-x">✕</span> O que parece progresso</span>
-                <span><span class="progresso-legenda-check">✓</span> O que precisa ser construído</span>
-            </div>
+            <div class="progresso-cards">
+                <div class="progresso-card progresso-card-x">
+                    <div class="progresso-card-titulo">O que parece progresso</div>
+                    <ul>
+                        <li>Fazer mais plantões quando falta dinheiro</li>
+                        <li>Ter dinheiro investido</li>
+                        <li>Aumentar o faturamento</li>
+                        <li>Ter contador, banco e assessor</li>
+                        <li>Manter um padrão de vida alto</li>
+                    </ul>
+                </div>
 
-            <div class="progresso-tabela">
-                <div class="progresso-cabecalho">O que parece progresso</div>
-                <div class="progresso-cabecalho progresso-cabecalho-destaque">O que precisa ser construído</div>
-
-                <div class="progresso-item progresso-parece">Fazer mais plantões quando falta dinheiro</div>
-                <div class="progresso-item progresso-constroi">Ter uma estrutura que não dependa sempre do próximo plantão</div>
-
-                <div class="progresso-item progresso-parece">Ter dinheiro investido</div>
-                <div class="progresso-item progresso-constroi">Saber por que cada investimento existe</div>
-
-                <div class="progresso-item progresso-parece">Aumentar o faturamento</div>
-                <div class="progresso-item progresso-constroi">Fazer a renda se transformar em patrimônio</div>
-
-                <div class="progresso-item progresso-parece">Ter contador, banco e assessor</div>
-                <div class="progresso-item progresso-constroi">Ter clareza sobre a decisão final</div>
-
-                <div class="progresso-item progresso-parece">Manter um padrão de vida alto</div>
-                <div class="progresso-item progresso-constroi">Poder escolher quanto e como trabalhar</div>
+                <div class="progresso-card progresso-card-check">
+                    <div class="progresso-card-titulo">O que precisa ser construído</div>
+                    <ul>
+                        <li>Ter uma estrutura que não dependa sempre do próximo plantão</li>
+                        <li>Saber por que cada investimento existe</li>
+                        <li>Fazer a renda se transformar em patrimônio</li>
+                        <li>Ter clareza sobre a decisão final</li>
+                        <li>Poder escolher quanto e como trabalhar</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -1498,48 +1717,57 @@
 
             <h2 id="modulos" style="margin-top: 60px; font-size: 32px;">Você aprende exatamente o que fazer em cada etapa da sua vida financeira:</h2>
 
-            <div class="modulos-grid">
-                <div class="modulo-card">
-                    <div class="modulo-numero">1</div>
-                    <div class="modulo-titulo">Finanças Pessoais</div>
-                    <div class="modulo-descricao">Construa uma base financeira sólida, organize seu dinheiro e desenvolva uma nova mentalidade sobre patrimônio desde o início da carreira.</div>
-                </div>
-                <div class="modulo-card">
-                    <div class="modulo-numero">2</div>
-                    <div class="modulo-titulo">Investimentos em Renda Fixa</div>
-                    <div class="modulo-descricao">Entenda como funcionam os investimentos de menor risco e saiba como utilizá-los para construir segurança e liquidez.</div>
-                </div>
-                <div class="modulo-card">
-                    <div class="modulo-numero">3</div>
-                    <div class="modulo-titulo">Investimentos em Renda Variável</div>
-                    <div class="modulo-descricao">Conheça os principais ativos de renda variável e compreenda quando eles fazem sentido dentro da sua estratégia patrimonial.</div>
-                </div>
-                <div class="modulo-card">
-                    <div class="modulo-numero">4</div>
-                    <div class="modulo-titulo">Crédito, Empréstimos e Financiamentos</div>
-                    <div class="modulo-descricao">Aprenda quando faz sentido utilizar crédito e como evitar decisões que comprometem seu patrimônio.</div>
-                </div>
-                <div class="modulo-card">
-                    <div class="modulo-numero">5</div>
-                    <div class="modulo-titulo">Seguros</div>
-                    <div class="modulo-descricao">Proteja sua renda, seu patrimônio e sua família com as principais estratégias de proteção financeira.</div>
-                </div>
-                <div class="modulo-card">
-                    <div class="modulo-numero">6</div>
-                    <div class="modulo-titulo">Contabilidade e Planejamento Tributário</div>
-                    <div class="modulo-descricao">Compreenda impostos, obrigações fiscais e tome decisões tributárias com mais segurança e eficiência.</div>
-                </div>
-                <div class="modulo-card">
-                    <div class="modulo-numero">7</div>
-                    <div class="modulo-titulo">Sucessão Patrimonial</div>
-                    <div class="modulo-descricao">Planeje a proteção e a transferência do seu patrimônio para garantir tranquilidade e segurança à sua família.</div>
-                </div>
-                <div class="modulo-card">
-                    <div class="modulo-numero">8</div>
-                    <div class="modulo-titulo">Aposentadoria</div>
-                    <div class="modulo-descricao">Estruture um plano de longo prazo para conquistar independência financeira e manter sua qualidade de vida no futuro.</div>
-                </div>
-            </div>
+            <table class="pilares-tabela">
+                <thead>
+                    <tr>
+                        <th>Etapa</th>
+                        <th>O que você organiza</th>
+                        <th>Por que isso importa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Etapa"><span class="pilar-badge">1</span>Finanças pessoais</td>
+                        <td data-label="O que você organiza">Renda, despesas, prioridades e patrimônio</td>
+                        <td data-label="Por que isso importa">Você deixa de olhar apenas para o saldo do mês.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Etapa"><span class="pilar-badge">2</span>Renda fixa</td>
+                        <td data-label="O que você organiza">Liquidez, segurança e base da carteira</td>
+                        <td data-label="Por que isso importa">Você entende onde construir sua reserva e sua base financeira.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Etapa"><span class="pilar-badge">3</span>Renda variável</td>
+                        <td data-label="O que você organiza">Risco, prazo e função dos ativos</td>
+                        <td data-label="Por que isso importa">Você para de investir apenas porque alguém indicou.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Etapa"><span class="pilar-badge">4</span>Crédito e financiamentos</td>
+                        <td data-label="O que você organiza">Empréstimos, dívidas e decisões de compra</td>
+                        <td data-label="Por que isso importa">Você entende quando o crédito ajuda e quando compromete o futuro.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Etapa"><span class="pilar-badge">5</span>Seguros</td>
+                        <td data-label="O que você organiza">Proteção da renda, família e patrimônio</td>
+                        <td data-label="Por que isso importa">Você reduz o impacto financeiro de eventos que não controla.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Etapa"><span class="pilar-badge">6</span>Impostos e planejamento tributário</td>
+                        <td data-label="O que você organiza">Obrigações, organização e decisões PF/PJ</td>
+                        <td data-label="Por que isso importa">Você passa a conversar melhor com contador e outros profissionais.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Etapa"><span class="pilar-badge">7</span>Sucessão patrimonial</td>
+                        <td data-label="O que você organiza">Proteção e transferência do que está construindo</td>
+                        <td data-label="Por que isso importa">Você não deixa decisões importantes para uma emergência.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Etapa"><span class="pilar-badge">8</span>Aposentadoria</td>
+                        <td data-label="O que você organiza">Longo prazo, independência e padrão de vida</td>
+                        <td data-label="Por que isso importa">Você começa a construir opções para o futuro.</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <p style="text-align:center; margin-top: 40px; font-size: 16px; color: #555; font-style: italic;">Mais do que ensinar investimentos, o método apresenta a sequência que todo médico precisa seguir para organizar sua vida financeira de forma prática e sustentável.</p>
         </div>
@@ -1626,53 +1854,104 @@
     <!-- PLANOS -->
     <section id="planos" class="section section-planos">
         <div class="planos-container">
-            <h2>Escolha o plano ideal para sua vida financeira</h2>
+            <h2>Comece pela estrutura que pode orientar todas as suas próximas decisões financeiras.</h2>
 
-            <div class="planos-grid">
-                <div class="plano-card">
-                    <div class="plano-titulo">Plano Essencial Boni</div>
-                    <div class="plano-descricao">Ideal para médicos que desejam organizar sua vida financeira e aplicar o método no próprio ritmo.</div>
+            <div class="oferta-principal-card">
+                <div class="oferta-plano-titulo">Plano Essencial Boni</div>
+                <p class="oferta-plano-desc">Para médicos que querem organizar a vida financeira e aplicar o método no próprio ritmo.</p>
 
-                    <div class="plano-preco-box">
-                        <div class="plano-parcelamento">12x de R$ 33,09</div>
-                        <div class="plano-parcela-label">sem juros</div>
-                        <div class="plano-divider"></div>
-                        <div class="plano-avista-label">ou à vista</div>
-                        <div class="plano-avista">R$ 397,00</div>
-                    </div>
+                <div class="oferta-recebe-label">Você recebe:</div>
+                <ul class="oferta-lista">
+                    <li>8 pilares da vida financeira médica</li>
+                    <li>13 horas de conteúdo prático</li>
+                    <li>Acesso por 12 meses</li>
+                    <li>Suporte ativo dentro da plataforma Hotmart</li>
+                    <li>Garantia de 7 dias</li>
+                </ul>
 
-                    <div class="plano-lista">
-                        <div class="plano-item">✓ 8 módulos · 13 horas de curso</div>
-                        <div class="plano-item">✓ Acesso por 12 meses</div>
-                        <div class="plano-item">✓ Suporte ativo dentro da plataforma Hotmart</div>
-                        <div class="plano-item">✓ Garantia de 7 dias</div>
-                    </div>
-
-                    <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="cta-button" style="width: 100%; display:block; text-align:center; text-decoration:none;">Quero acessar o método</a>
+                <div class="oferta-preco-box">
+                    <div class="oferta-preco-parcela">12x de R$ 33,09 <span>sem juros</span></div>
+                    <div class="oferta-preco-avista">ou R$ 397,00 à vista</div>
                 </div>
 
-                <div class="plano-card plano-premium">
-                    <div class="premium-badge">PREMIUM</div>
-                    <div class="plano-titulo">Plano Individual Boni</div>
-                    <div class="plano-descricao">Ideal para médicos que desejam aplicar o método com direcionamento individual e tomar decisões financeiras com mais segurança.</div>
+                <p class="oferta-ancoragem">Menos de R$ 35 por mês para acessar uma rota que ajuda você a organizar as decisões envolvendo renda, impostos, reserva, proteção, investimentos e patrimônio.</p>
 
-                    <div class="plano-preco-box">
-                        <div class="plano-parcelamento">12x de R$ 166,42</div>
-                        <div class="plano-parcela-label">sem juros</div>
-                        <div class="plano-divider"></div>
-                        <div class="plano-avista-label">ou à vista</div>
-                        <div class="plano-avista">R$ 1.997,00</div>
-                    </div>
+                <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="cta-button oferta-cta-principal">Quero acessar o Método Salva Boni</a>
 
-                    <div class="plano-lista">
-                        <div class="plano-item">✓ Todo o conteúdo do Plano Essencial Boni</div>
-                        <div class="plano-item">✓ 4 encontros individuais (1h cada)</div>
-                        <div class="plano-item">✓ Acesso por 12 meses</div>
-                        <div class="plano-item">✓ Garantia de 7 dias</div>
-                    </div>
+                <div class="oferta-microcopy">Compra segura. Acesso por 12 meses. Garantia de 7 dias.</div>
+            </div>
 
-                    <a href="https://pay.hotmart.com/M103424413G?off=y41f1fm1&bid=1783426019818" target="_blank" class="cta-button" style="width: 100%; display:block; text-align:center; text-decoration:none;">Quero acompanhamento individual</a>
-                </div>
+            <div class="oferta-individual-card">
+                <div class="oferta-individual-titulo">Quer aplicar o método com direcionamento individual?</div>
+                <p class="oferta-individual-desc">O Plano Individual Boni inclui todo o Método Salva Boni e quatro encontros individuais de uma hora com Vitor, realizados dentro do período de 100 dias da proposta.</p>
+                <p class="oferta-individual-desc">É indicado para médicos que já sabem que precisam organizar a vida financeira, mas querem discutir o próprio momento com mais profundidade e segurança.</p>
+
+                <div class="oferta-individual-preco">12x de R$ 166,42 sem juros <span>ou R$ 1.997,00 à vista</span></div>
+
+                <a href="https://pay.hotmart.com/M103424413G?off=y41f1fm1&bid=1783426019818" target="_blank" class="cta-button-secundario">Quero conhecer o Plano Individual</a>
+            </div>
+
+            <div class="planos-comparacao">
+                <h3 class="planos-comparacao-titulo">Comparação completa dos planos</h3>
+
+                <button type="button" class="planos-toggle-btn" onclick="var t=document.getElementById('planos-tabela-completa'); var aberta=t.classList.toggle('planos-tabela-aberta'); this.textContent = aberta ? 'Ocultar comparação completa ▴' : 'Ver comparação completa dos planos ▾';">Ver comparação completa dos planos ▾</button>
+
+                <table class="planos-tabela" id="planos-tabela-completa">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Essencial Boni</th>
+                            <th class="planos-tabela-destaque">Individual Boni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="">Método completo</td>
+                            <td data-label="Essencial Boni"><span class="tp-sim">✓</span></td>
+                            <td data-label="Individual Boni" class="planos-tabela-destaque"><span class="tp-sim">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="">8 pilares</td>
+                            <td data-label="Essencial Boni"><span class="tp-sim">✓</span></td>
+                            <td data-label="Individual Boni" class="planos-tabela-destaque"><span class="tp-sim">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="">13 horas de conteúdo</td>
+                            <td data-label="Essencial Boni"><span class="tp-sim">✓</span></td>
+                            <td data-label="Individual Boni" class="planos-tabela-destaque"><span class="tp-sim">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="">Acesso por 12 meses</td>
+                            <td data-label="Essencial Boni"><span class="tp-sim">✓</span></td>
+                            <td data-label="Individual Boni" class="planos-tabela-destaque"><span class="tp-sim">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="">Suporte na plataforma</td>
+                            <td data-label="Essencial Boni"><span class="tp-sim">✓</span></td>
+                            <td data-label="Individual Boni" class="planos-tabela-destaque"><span class="tp-sim">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="">Garantia de 7 dias</td>
+                            <td data-label="Essencial Boni"><span class="tp-sim">✓</span></td>
+                            <td data-label="Individual Boni" class="planos-tabela-destaque"><span class="tp-sim">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="">Encontros individuais com Vitor</td>
+                            <td data-label="Essencial Boni"><span class="tp-nao">—</span></td>
+                            <td data-label="Individual Boni" class="planos-tabela-destaque">4 encontros de 1 hora</td>
+                        </tr>
+                        <tr>
+                            <td data-label="">Para quem é</td>
+                            <td data-label="Essencial Boni">Quem quer aplicar no próprio ritmo</td>
+                            <td data-label="Individual Boni" class="planos-tabela-destaque">Quem quer direcionamento individual</td>
+                        </tr>
+                        <tr>
+                            <td data-label="">Investimento</td>
+                            <td data-label="Essencial Boni">12x de R$ 33,09<br>ou R$ 397,00 à vista</td>
+                            <td data-label="Individual Boni" class="planos-tabela-destaque">12x de R$ 166,42<br>ou R$ 1.997,00 à vista</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
