@@ -173,8 +173,20 @@
         }
         .whatsapp-section {
             text-align: center;
-            padding: 40px 24px;
-            background: #f4f6f9;
+            padding: 44px 24px;
+            background: transparent;
+            position: relative;
+        }
+        .whatsapp-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 64px;
+            height: 2px;
+            background: var(--dourado);
+            opacity: 0.6;
         }
         .whatsapp-section p {
             font-size: 17px;
@@ -188,8 +200,7 @@
             background: linear-gradient(135deg, rgba(13, 31, 45, 0.75) 0%, rgba(26, 58, 82, 0.75) 50%, rgba(15, 36, 56, 0.8) 100%),
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%25" style="stop-color:%23e8f0f5;stop-opacity:1" /><stop offset="100%25" style="stop-color:%23d0e0eb;stop-opacity:1" /></linearGradient></defs><rect fill="url(%23bg)" width="1200" height="600"/><circle cx="150" cy="150" r="120" fill="%23c5d9e8" opacity="0.3"/><circle cx="1050" cy="450" r="150" fill="%23b8cfe1" opacity="0.25"/><path d="M 100 300 Q 200 250 300 300 T 500 300" stroke="%23a0c0d8" stroke-width="2" fill="none" opacity="0.2"/></svg>');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-position: center 50%;
             color: white;
             padding: 160px 24px 100px;
             min-height: 100vh;
@@ -347,11 +358,24 @@
         }
 
         .section-metodo {
-            background: linear-gradient(180deg, #ffffff 0%, #f5f6f7 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f5f6f7 45%, #f5f6f7 80%, #ffffff 100%);
+        }
+
+        .metodo-pullquote {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--azul);
+            text-align: center;
+            line-height: 1.45;
+            max-width: 700px;
+            margin: 28px auto 0;
+            padding-top: 24px;
+            border-top: 2px solid var(--dourado);
         }
 
         .section-vitor {
-            background: linear-gradient(180deg, #f5f6f7 0%, #faf8fb 50%, #f5f6f7 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f5f6f7 30%, #faf8fb 60%, #ffffff 100%);
         }
 
         .section-depoimentos {
@@ -359,7 +383,7 @@
         }
 
         .section-planos {
-            background: linear-gradient(180deg, #ffffff 0%, #f8f9f9 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9f9 40%, #f8f9f9 75%, #ffffff 100%);
         }
 
         .section-faq {
@@ -392,6 +416,54 @@
             color: #555;
             margin-bottom: 20px;
             text-align: center;
+        }
+
+        /* ===== EYEBROW (rótulo acima dos títulos de seção) ===== */
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--dourado);
+            margin-bottom: 14px;
+        }
+
+        .eyebrow::before,
+        .eyebrow::after {
+            content: '';
+            width: 22px;
+            height: 1px;
+            background: var(--dourado);
+            opacity: 0.6;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-stagger.reveal-visible > * {
+            animation: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
         }
 
         /* ===== PROBLEMA ===== */
@@ -437,7 +509,7 @@
 
         /* ===== REFLEXÃO / TABELA PROGRESSO ===== */
         .section-reflexao {
-            background: linear-gradient(180deg, #f7f9fb 0%, #ffffff 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f7f9fb 40%, #ffffff 100%);
         }
 
         .reflexao-content {
@@ -544,6 +616,20 @@
         .progresso-card-check li::before {
             content: '✓';
             color: var(--dourado);
+        }
+
+        @media (min-width: 901px) {
+            .reflexao-content {
+                display: grid;
+                grid-template-columns: 1fr 0.85fr;
+                gap: 64px;
+                max-width: 1080px;
+                align-items: center;
+            }
+            .reflexao-content > .reflexao-quote { grid-column: 1; grid-row: 1; text-align: left; margin: 0; }
+            .reflexao-content > p { grid-column: 1; grid-row: 2; text-align: left; margin-left: 0; margin-right: 0; max-width: none; }
+            .reflexao-content > p:nth-of-type(2) { grid-row: 3; margin-bottom: 0; }
+            .reflexao-content > .progresso-cards { grid-column: 2; grid-row: 1 / span 3; grid-template-columns: 1fr; margin: 0; align-self: stretch; }
         }
 
         /* ===== VSL ===== */
@@ -653,20 +739,29 @@
 
         /* ===== VITOR ===== */
         .vitor-content {
-            max-width: 950px;
+            max-width: 1080px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
+            grid-template-columns: 0.85fr 1fr;
+            gap: 56px;
+            align-items: stretch;
         }
 
         .vitor-foto {
-            border-radius: 12px;
-            height: 520px;
+            border-radius: 0;
+            height: 100%;
+            min-height: 480px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(26, 58, 82, 0.15);
+            box-shadow: none;
             background: #f0f0f0;
+            position: relative;
+        }
+
+        .vitor-foto::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-shadow: inset -1px 0 0 rgba(0,0,0,0.06);
         }
 
         .vitor-foto img {
@@ -1286,6 +1381,10 @@
         }
 
         /* ===== COOKIE BANNER ===== */
+        .sticky-cta-mobile {
+            display: none;
+        }
+
         .cookie-banner {
             display: none;
             position: fixed;
@@ -1348,7 +1447,7 @@
             .progresso-cards { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
             .progresso-card { padding: 26px 22px; }
             .vitor-content { grid-template-columns: 1fr; gap: 24px; }
-            .vitor-foto { height: 300px; }
+            .vitor-foto { height: 380px; min-height: 0; }
             .vitor-texto h2 { font-size: 24px; }
             .vitor-texto p { font-size: 15px; margin-bottom: 14px; }
             .pilares-tabela { margin-top: 24px; box-shadow: none; border-radius: 0; border: none; background: transparent; border-collapse: separate; border-spacing: 0 14px; }
@@ -1471,6 +1570,34 @@
             .quiz-card { padding: 28px 22px; }
             .cookie-banner { left: 12px; right: 12px; bottom: 12px; padding: 16px 18px; }
             .cookie-banner-btn { width: 100%; }
+
+            .sticky-cta-mobile {
+                display: block;
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 950;
+                background: var(--azul-escuro);
+                padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+                box-shadow: 0 -8px 24px rgba(0,0,0,0.18);
+                transform: translateY(100%);
+                transition: transform 0.35s ease;
+            }
+            body.show-sticky-cta .sticky-cta-mobile { transform: translateY(0); }
+            .sticky-cta-mobile a {
+                display: block;
+                text-align: center;
+                background: var(--dourado);
+                color: var(--azul);
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                font-size: 14.5px;
+                text-decoration: none;
+                padding: 14px;
+                border-radius: 8px;
+            }
+            body.show-sticky-cta .cookie-banner { bottom: 78px; }
         }
     </style>
 </head>
@@ -1489,7 +1616,7 @@
             <li><a href="#vitor">Quem é Vitor Bonilha</a></li>
             <li><a href="#planos">Planos</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="navbar-cta">Quero acessar o método</a></li>
+            <li><a href="https://pay.hotmart.com/I93630334B?off=avit2ugv&bid=1789766546920" target="_blank" class="navbar-cta">Quero acessar o método</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -1505,7 +1632,7 @@
             <li><a href="#planos" class="mobile-nav-link">Planos</a></li>
             <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
         </ul>
-        <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="mobile-cta">Quero acessar o método</a>
+        <a href="https://pay.hotmart.com/I93630334B?off=avit2ugv&bid=1789766546920" target="_blank" class="mobile-cta">Quero acessar o método</a>
     </div>
 
     <!-- HERO -->
@@ -1515,12 +1642,12 @@
             <p style="margin-bottom: 20px;">Você ganha como médico. Mas o seu dinheiro já está construindo a vida que você quer?</p>
             <p style="margin-bottom: 20px;">A falta de planejamento e organização financeira é o maior vilão da carreira médica.</p>
             <p>A realidade de muitos médicos hoje é: quanto mais plantões exaustivos, menos dinheiro investido e mais dívidas altas.</p>
-            <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="cta-button" style="text-decoration:none; display:inline-block;">Quero organizar as minhas finanças</a>
+            <a href="https://pay.hotmart.com/I93630334B?off=avit2ugv&bid=1789766546920" target="_blank" class="cta-button" style="text-decoration:none; display:inline-block;">Quero organizar as minhas finanças</a>
         </div>
     </section>
 
     <!-- TICKER ANIMADO -->
-    <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" style="display:block; background:var(--azul); padding: 14px 0; overflow:hidden; text-decoration:none;">
+    <a href="https://pay.hotmart.com/I93630334B?off=avit2ugv&bid=1789766546920" target="_blank" style="display:block; background:var(--azul); padding: 14px 0; overflow:hidden; text-decoration:none;">
         <div class="ticker-container">
             <div class="ticker-content">
                 <span class="ticker-item" style="color:#fff;">
@@ -1546,7 +1673,8 @@
     <!-- PROBLEMA -->
     <section class="section section-problema">
         <div class="problema-content">
-            <h2>Nenhum aluno de medicina teve uma matéria de finanças na faculdade.</h2>
+            <span class="eyebrow reveal">O problema</span>
+            <h2 class="reveal">Nenhum aluno de medicina teve uma matéria de finanças na faculdade.</h2>
 
             <p>Por isso, o <span class="vitor-destaque">Método Salva Boni</span> mostra, em uma sequência prática, como organizar renda, impostos, reserva, proteção, investimentos e patrimônio para tomar decisões melhores ao longo da carreira médica.</p>
 
@@ -1570,7 +1698,7 @@
         </div>
 
         <div style="text-align:center; margin: 40px 0 0;">
-            <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="cta-button" style="text-decoration:none; display:inline-block;">Quero organizar as finanças da minha carreira médica</a>
+            <a href="https://pay.hotmart.com/I93630334B?off=avit2ugv&bid=1789766546920" target="_blank" class="cta-button" style="text-decoration:none; display:inline-block;">Quero organizar as finanças da minha carreira médica</a>
             <div class="oferta-microcopy">Acesso imediato após a confirmação do pagamento. Você tem 7 dias para conhecer o método.</div>
         </div>
     </section>
@@ -1579,12 +1707,12 @@
     <!-- REFLEXÃO / TABELA PROGRESSO -->
     <section class="section section-reflexao">
         <div class="reflexao-content">
-            <div class="reflexao-quote">"Se eu precisar parar por alguns meses, quanto tempo a minha vida consegue continuar?"</div>
+            <div class="reflexao-quote reveal">"Se eu precisar parar por alguns meses, quanto tempo a minha vida consegue continuar?"</div>
 
-            <p>O plantão resolve o mês, mas não vai resolver a sua vida financeira.</p>
-            <p>Você pode aumentar sua renda por anos e continuar dependendo da próxima escala para manter o padrão de vida. O dinheiro entra. Uma parte vai para impostos. Outra parte cobre despesas, financiamentos e decisões tomadas.</p>
+            <p class="reveal">O plantão resolve o mês, mas não vai resolver a sua vida financeira.</p>
+            <p class="reveal">Você pode aumentar sua renda por anos e continuar dependendo da próxima escala para manter o padrão de vida. O dinheiro entra. Uma parte vai para impostos. Outra parte cobre despesas, financiamentos e decisões tomadas.</p>
 
-            <div class="progresso-cards">
+            <div class="progresso-cards reveal">
                 <div class="progresso-card progresso-card-x">
                     <div class="progresso-card-titulo">O que parece progresso</div>
                     <ul>
@@ -1613,22 +1741,21 @@
     <!-- MÉTODO -->
     <section id="metodo" class="section section-metodo">
         <div style="max-width: 900px; margin: 0 auto;">
-            <h2>O que é o Método Salva Boni?</h2>
+            <span class="eyebrow reveal">O método</span>
+            <h2 class="reveal">O que é o Método Salva Boni?</h2>
 
-            <p>O Método Salva Boni é um direcionamento financeiro para médicos que querem começar a carreira com mais clareza sobre o próprio dinheiro.</p>
+            <p class="reveal">O Método Salva Boni é um direcionamento financeiro para médicos: nasce da mesma dor de sempre — anos se preparando para a profissão, mas chegando ao mercado sem uma base clara para decidir sobre dinheiro, investimentos, patrimônio, seguros e impostos.</p>
 
-            <p>Ele nasce de uma dor comum: muitos médicos passam anos se preparando para exercer a profissão, mas chegam ao mercado sem uma base clara para lidar com a própria vida financeira. E é justamente nesse momento que começam a aparecer decisões importantes: dinheiro entrando de formas diferentes, propostas de investimento, escolhas sobre patrimônio, seguros, impostos, financiamentos e planos para o futuro.</p>
-
-            <p>Por isso, o método transforma temas financeiros importantes em videoaulas simples, objetivas e aplicáveis, divididas em 8 pilares essenciais.</p>
+            <div class="metodo-pullquote reveal">Por isso, o método transforma temas financeiros complexos em videoaulas simples, objetivas e aplicáveis — divididas em 8 pilares essenciais.</div>
 
 
-            <div style="text-align:center; margin: 40px 0 20px;">
-                <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="cta-button" style="text-decoration:none; display:inline-block;">Quero acessar o método</a>
+            <div style="text-align:center; margin: 32px 0 8px;">
+                <a href="https://pay.hotmart.com/I93630334B?off=avit2ugv&bid=1789766546920" target="_blank" class="cta-button-secundario" style="text-decoration:none; display:inline-block;">Quero acessar o método →</a>
             </div>
 
-            <h2 id="modulos" style="margin-top: 60px; font-size: 32px;">Você aprende exatamente o que fazer em cada etapa da sua vida financeira:</h2>
+            <h2 id="modulos" class="reveal" style="margin-top: 60px; font-size: 32px;">Você aprende exatamente o que fazer em cada etapa da sua vida financeira:</h2>
 
-            <table class="pilares-tabela">
+            <table class="pilares-tabela reveal">
                 <thead>
                     <tr>
                         <th>Etapa</th>
@@ -1716,18 +1843,19 @@
         </div>
 
         <div style="text-align:center; margin-top: 40px;">
-            <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="cta-button" style="text-decoration:none; display:inline-block;">Quero minha prosperidade financeira</a>
+            <a href="https://pay.hotmart.com/I93630334B?off=avit2ugv&bid=1789766546920" target="_blank" class="cta-button" style="text-decoration:none; display:inline-block;">Quero minha prosperidade financeira</a>
         </div>
     </section>
 
     <!-- VITOR -->
     <section id="vitor" class="section section-vitor" style="padding: 120px 24px;">
         <div class="vitor-content">
-            <div class="vitor-foto">
+            <div class="vitor-foto reveal">
                 <img src="VITOR BONILHA 0578.jpg" alt="Vitor Bonilha - Consultor Financeiro" loading="lazy">
             </div>
             <div class="vitor-texto">
-                <h2>Quem criou o método conhece o mercado financeiro e conhece a sala de aula.</h2>
+                <span class="eyebrow reveal" style="justify-content:flex-start;">Quem é o Vitor</span>
+                <h2 class="reveal" style="text-align:left;">Quem criou o método conhece o mercado financeiro e conhece a sala de aula.</h2>
 
                 <p>Vitor Bonilha é <span class="vitor-destaque">planejador financeiro especialista em médicos</span>, com <span class="vitor-destaque">mais de 15 anos de experiência no mercado financeiro</span>, <span class="vitor-destaque">mais de 10 anos como professor universitário</span> e certificação <span class="vitor-destaque">CFP®</span>.</p>
 
@@ -1746,11 +1874,12 @@
     </section>
 
     <!-- PLANOS -->
-    <section id="planos" class="section section-planos">
+    <section id="planos" class="section section-planos" style="padding-top: 88px; padding-bottom: 88px;">
         <div class="planos-container">
-            <h2>Comece pela estrutura que pode orientar todas as suas próximas decisões financeiras.</h2>
+            <span class="eyebrow reveal">O investimento</span>
+            <h2 class="reveal">Comece pela estrutura que pode orientar todas as suas próximas decisões financeiras.</h2>
 
-            <div class="oferta-principal-card">
+            <div class="oferta-principal-card reveal">
                 <div class="oferta-plano-titulo">Plano Essencial Boni</div>
                 <p class="oferta-plano-desc">Para médicos que querem organizar a vida financeira e aplicar o método no próprio ritmo.</p>
 
@@ -1764,13 +1893,13 @@
                 </ul>
 
                 <div class="oferta-preco-box">
-                    <div class="oferta-preco-parcela">12x de R$ 33,09 <span>sem juros</span></div>
-                    <div class="oferta-preco-avista">ou R$ 397,00 à vista</div>
+                    <div class="oferta-preco-parcela">12x de R$ 10,03 <span>sem juros</span></div>
+                    <div class="oferta-preco-avista">ou R$ 97,00 à vista</div>
                 </div>
 
-                <p class="oferta-ancoragem">Menos de R$ 35 por mês para acessar uma rota que ajuda você a organizar as decisões envolvendo renda, impostos, reserva, proteção, investimentos e patrimônio.</p>
+                <p class="oferta-ancoragem">Menos de R$ 11 por mês para acessar uma rota que ajuda você a organizar as decisões envolvendo renda, impostos, reserva, proteção, investimentos e patrimônio.</p>
 
-                <a href="https://pay.hotmart.com/I93630334B?checkoutMode=0&bid=1783023659179" target="_blank" class="cta-button oferta-cta-principal">Quero acessar o Método Salva Boni</a>
+                <a href="https://pay.hotmart.com/I93630334B?off=avit2ugv&bid=1789766546920" target="_blank" class="cta-button oferta-cta-principal">Quero acessar o Método Salva Boni</a>
 
                 <div class="oferta-microcopy">Compra segura. Acesso por 12 meses. Garantia de 7 dias.</div>
             </div>
@@ -1841,7 +1970,7 @@
                         </tr>
                         <tr>
                             <td data-label="">Investimento</td>
-                            <td data-label="Essencial Boni">12x de R$ 33,09<br>ou R$ 397,00 à vista</td>
+                            <td data-label="Essencial Boni">12x de R$ 10,03<br>ou R$ 97,00 à vista</td>
                             <td data-label="Individual Boni" class="planos-tabela-destaque">12x de R$ 166,42<br>ou R$ 1.997,00 à vista</td>
                         </tr>
                     </tbody>
@@ -1896,7 +2025,8 @@
     <!-- FAQ -->
     <section id="faq" class="section section-faq">
         <div class="faq-container">
-            <h2>Dúvidas frequentes</h2>
+            <span class="eyebrow reveal">Antes de decidir</span>
+            <h2 class="reveal">Dúvidas frequentes</h2>
 
             <div class="faq-item">
                 <div class="faq-pergunta">
@@ -1985,6 +2115,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- BARRA FIXA CTA MOBILE -->
+    <div class="sticky-cta-mobile" id="sticky-cta-mobile">
+        <a href="https://pay.hotmart.com/I93630334B?off=avit2ugv&bid=1789766546920" target="_blank">Quero organizar minhas finanças</a>
+    </div>
 
     <!-- COOKIE BANNER -->
     <div class="cookie-banner" id="cookie-banner">
@@ -2191,6 +2326,46 @@
             const banner = document.getElementById('cookie-banner');
             if (!banner || localStorage.getItem('cookieConsent')) return;
             banner.classList.add('active');
+        })();
+
+        // Scroll reveal
+        (function() {
+            const targets = document.querySelectorAll('.reveal');
+            if (!targets.length) return;
+            if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                targets.forEach(el => el.classList.add('reveal-visible'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+            targets.forEach(el => observer.observe(el));
+
+            // Rede de segurança: garante que nada fique invisível se o navegador
+            // atrasar o IntersectionObserver (ex: aba em segundo plano ao carregar).
+            setTimeout(() => {
+                targets.forEach(el => el.classList.add('reveal-visible'));
+                observer.disconnect();
+            }, 3000);
+        })();
+
+        // Barra fixa de CTA no mobile, após passar do hero
+        (function() {
+            const bar = document.getElementById('sticky-cta-mobile');
+            const hero = document.querySelector('.hero');
+            if (!bar || !hero) return;
+            if (!('IntersectionObserver' in window)) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    document.body.classList.toggle('show-sticky-cta', !entry.isIntersecting);
+                });
+            }, { threshold: 0 });
+            observer.observe(hero);
         })();
     </script>
 </body>
